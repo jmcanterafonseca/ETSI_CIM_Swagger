@@ -36,7 +36,19 @@
                 }
             },
             "post": {
-                
+                "description": "Allows to provide one or more entity(ies)",
+                "operationId": "createEntities",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                    },
+                    "201": {
+                        "description": "Created"
+                    }
+                }
             }
         },
         "/entities/byType/{typeId}": {
@@ -62,7 +74,7 @@
         },
         "entities/byId/{entityId}": {
             "get": {
-                "description": "Lists entities which type is the one passed as paramters",
+                "description": "Retrieves an entity by identifier",
                 "operationId": "entitiesById",
                  "parameters": [
                     {
@@ -84,7 +96,26 @@
                 }
             },
             "delete": {
-                
+                "description": "Deletes an entity by identifier",
+                "operationId": "deleteEntityById",
+                 "parameters": [
+                    {
+                        "name": "entityId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "No data"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
             }
         },
         "entities/byId/{entityId}/properties": {
@@ -142,7 +173,31 @@
                 
             },
             "delete": {
-                
+                "description": "Deletes a property of an entity",
+                "operationId": "deleteEntityProperty",
+                 "parameters": [
+                    {
+                        "name": "entityId",
+                        "in": "path",
+                        "required": true
+                    },
+                     {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
             }
         },
         "/csources": {

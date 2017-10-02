@@ -28,10 +28,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "cim_schema.json#/definitions/CsourceDescriptionList"
-                        }
+                        "description": "OK"
                     }
                 }
             },
@@ -43,7 +40,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "OK"
                     },
                     "201": {
                         "description": "Created"
@@ -51,9 +48,9 @@
                 }
             }
         },
-        "/entities/byType/{typeId}": {
+        "/entities/{typeId}": {
             "get": {
-                "description": "Lists entities which type is the one passed as paramters",
+                "description": "Lists entities which type is the one passed as parameter",
                 "operationId": "entitiesByType",
                  "parameters": [
                     {
@@ -72,12 +69,17 @@
                 }
             }
         },
-        "entities/byId/{entityId}": {
+        "entities/{typeId}/{entityId}": {
             "get": {
-                "description": "Retrieves an entity by identifier",
+                "description": "Retrieves an entity by type and identifier",
                 "operationId": "entitiesById",
                  "parameters": [
                     {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true
+                    },
+                     {
                         "name": "entityId",
                         "in": "path",
                         "required": true
@@ -98,7 +100,12 @@
             "delete": {
                 "description": "Deletes an entity by identifier",
                 "operationId": "deleteEntityById",
-                 "parameters": [
+                "parameters": [
+                    {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true
+                    },
                     {
                         "name": "entityId",
                         "in": "path",
@@ -118,10 +125,22 @@
                 }
             }
         },
-        "entities/byId/{entityId}/properties": {
+        "entities/{typeId}/{entityId}/properties": {
             "get": {
                 "description": "Lists the properties and values of a particular entity",
                 "operationId": "entityProperties",
+                "parameters": [
+                    {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "entityId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -141,7 +160,7 @@
                 
             }
         },
-        "entities/byId/{entityId}/properties/{propertyId}": {
+        "entities/{typeId}/{entityId}/properties/{propertyId}": {
             "get": {
                 "description": "Lists a property of an entity",
                 "operationId": "entityProperty",
@@ -151,7 +170,12 @@
                         "in": "path",
                         "required": true
                     },
-                     {
+                    {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true
+                    }
+                    {
                         "name": "propertyId",
                         "in": "path",
                         "required": true
@@ -181,7 +205,12 @@
                         "in": "path",
                         "required": true
                     },
-                     {
+                    {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
                         "name": "propertyId",
                         "in": "path",
                         "required": true

@@ -28,10 +28,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "cim_schema.json#/definitions/CsourceDescriptionList"
-                        }
+                        "description": "OK"
                     }
                 }
             },
@@ -43,7 +40,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "OK"
                     },
                     "201": {
                         "description": "Created"
@@ -51,15 +48,16 @@
                 }
             }
         },
-        "/entities/byType/{typeId}": {
+        "/entities/{typeId}": {
             "get": {
-                "description": "Lists entities which type is the one passed as paramters",
+                "description": "Lists entities which type is the one passed as parameter",
                 "operationId": "entitiesByType",
                  "parameters": [
                     {
                         "name": "typeId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -72,15 +70,22 @@
                 }
             }
         },
-        "entities/byId/{entityId}": {
+        "/entities/{typeId}/{entityId}": {
             "get": {
-                "description": "Retrieves an entity by identifier",
+                "description": "Retrieves an entity by type and identifier",
                 "operationId": "entitiesById",
                  "parameters": [
                     {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                     {
                         "name": "entityId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -98,11 +103,18 @@
             "delete": {
                 "description": "Deletes an entity by identifier",
                 "operationId": "deleteEntityById",
-                 "parameters": [
+                "parameters": [
+                    {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
                     {
                         "name": "entityId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -118,10 +130,24 @@
                 }
             }
         },
-        "entities/byId/{entityId}/properties": {
+        "/entities/{typeId}/{entityId}/properties": {
             "get": {
                 "description": "Lists the properties and values of a particular entity",
                 "operationId": "entityProperties",
+                "parameters": [
+                    {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "entityId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -135,26 +161,42 @@
                 }
             },
             "post": {
-                
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
             },
             "patch": {
-                
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
             }
         },
-        "entities/byId/{entityId}/properties/{propertyId}": {
+        "/entities/{typeId}/{entityId}/properties/{propertyId}": {
             "get": {
                 "description": "Lists a property of an entity",
                 "operationId": "entityProperty",
                  "parameters": [
                     {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "entityId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     },
-                     {
+                    {
                         "name": "propertyId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -170,21 +212,33 @@
                 }
             },
             "patch": {
-                
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
             },
             "delete": {
                 "description": "Deletes a property of an entity",
                 "operationId": "deleteEntityProperty",
                  "parameters": [
+                     {
+                        "name": "typeId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
                     {
                         "name": "entityId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     },
-                     {
+                    {
                         "name": "propertyId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -256,7 +310,8 @@
                     {
                         "name": "registrationId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -281,7 +336,8 @@
                     {
                         "name": "registrationId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -300,7 +356,8 @@
                     {
                         "name": "registrationId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     },
                     {
                         "name": "body",
@@ -377,7 +434,8 @@
                     {
                         "name": "subscriptionId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -402,7 +460,8 @@
                     {
                         "name": "subscriptionId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -421,7 +480,8 @@
                     {
                         "name": "subscriptionId",
                         "in": "path",
-                        "required": true
+                        "required": true,
+                        "type": "string"
                     },
                     {
                         "name": "body",

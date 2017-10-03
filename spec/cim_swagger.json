@@ -23,8 +23,35 @@
             "get": {
                 "description": "Lists entities locally available in the system",
                 "operationId": "listEntities",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "properties",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "options",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
                 "produces": [
-                    "application/json"
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -35,6 +62,7 @@
             "post": {
                 "description": "Allows to provide one or more entity(ies)",
                 "operationId": "createEntities",
+                "consumes": ["application/ld+json"],
                 "produces": [
                     "application/json"
                 ],
@@ -58,10 +86,30 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "properties",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "options",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -86,10 +134,20 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "properties",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "options",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -117,12 +175,9 @@
                         "type": "string"
                     }
                 ],
-                "produces": [
-                    "application/json"
-                ],
                 "responses": {
-                    "201": {
-                        "description": "No data"
+                    "204": {
+                        "description": "No content"
                     },
                     "404": {
                         "description": "Not Found"
@@ -131,39 +186,13 @@
             }
         },
         "/entities/{typeId}/{entityId}/properties": {
-            "get": {
-                "description": "Lists the properties and values of a particular entity",
-                "operationId": "entityProperties",
-                "parameters": [
-                    {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "entityId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                }
-            },
             "post": {
                 "responses": {
                     "201": {
                         "description": "Created"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 }
             },
@@ -171,15 +200,18 @@
                 "responses": {
                     "204": {
                         "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 }
             }
         },
         "/entities/{typeId}/{entityId}/properties/{propertyId}": {
-            "get": {
-                "description": "Lists a property of an entity",
-                "operationId": "entityProperty",
-                 "parameters": [
+            "patch": {
+                "description": "Updates a property of an entity",
+                "operationId": "updateEntityProperty",
+                "parameters": [
                     {
                         "name": "typeId",
                         "in": "path",
@@ -199,22 +231,12 @@
                         "type": "string"
                     }
                 ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                }
-            },
-            "patch": {
                 "responses": {
                     "204": {
                         "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 }
             },
@@ -240,9 +262,6 @@
                         "required": true,
                         "type": "string"
                     }
-                ],
-                "produces": [
-                    "application/json"
                 ],
                 "responses": {
                     "204": {

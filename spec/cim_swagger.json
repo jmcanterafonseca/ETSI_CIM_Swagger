@@ -25,6 +25,11 @@
                 "operationId": "listEntities",
                 "parameters": [
                     {
+                        "name": "Link",
+                        "in": "header",
+                        "type": "string"
+                    },
+                    {
                         "name": "id",
                         "in": "query",
                         "type": "string"
@@ -71,20 +76,39 @@
                     }
                 ],
                 "produces": [
-                    "application/ld+json"
+                    "application/ld+json",
+                    "application/json"
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "headers": {
+                            "Link": {
+                                "description": "JSON-LD Schema"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad input data"
                     }
                 }
             },
             "post": {
                 "description": "Allows to provide one or more entity(ies)",
                 "operationId": "createEntities",
-                "consumes": ["application/ld+json"],
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
                 "produces": [
                     "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Link",
+                        "in": "header",
+                        "type": "string"
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -92,6 +116,9 @@
                     },
                     "201": {
                         "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad input data"
                     }
                 }
             }

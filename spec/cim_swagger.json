@@ -45,8 +45,28 @@
                         "type": "string"
                     },
                     {
+                      "name": "georel",
+                      "in": "query",
+                      "type": "string"
+                    },
+                    {
+                        "name": "geometry",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "coordinates",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
                         "name": "options",
                         "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Link",
+                        "in": "header",
                         "type": "string"
                     }
                 ],

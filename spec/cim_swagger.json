@@ -582,7 +582,7 @@
                 "operationId": "updateSubscription",
                 "parameters": [
                     {
-                       "$ref": "subscriptionIdPathParam"
+                        "$ref": "#/parameters/subscriptionIdPathParam"
                     },
                     {
                         "name": "body",

@@ -88,7 +88,20 @@
                 "produces": [
                     "application/ld+json",
                     "application/json"
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                            "Link": {
+                                "description": "JSON-LD @context"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad input data"
+                    }
+                }
             },
             "post": {
                 "description": "Allows to provide one or more entity(ies)",

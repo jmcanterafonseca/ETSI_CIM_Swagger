@@ -94,7 +94,7 @@
                         "description": "OK",
                         "headers": {
                             "Link": {
-                                "description": "JSON-LD @context"
+                                "description": "JSON-LD Context"
                             }
                         }
                     },
@@ -582,7 +582,7 @@
     "schemes": [
         "http"
     ],
-    "swagger": "3.0",
+    "swagger": "2.0",
     "tags": [
         {
             "description": "ETSI ISG CIM API",

@@ -99,13 +99,15 @@
             "name": "registrationId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Registration identifier"
         },
         "subscriptionIdPathParam": {
             "name": "subscriptionId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Subscription identifier"
         }
     }, 
     "paths": {
@@ -168,7 +170,10 @@
                         "description": "Created"
                     },
                     "400": {
-                        "description": "Bad input data"
+                        "description": "Bad input data",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }
@@ -202,13 +207,16 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }
         },
         "/entities/{typeId}/{entityId}": {
-             "parameters": [
+            "parameters": [
                 { "$ref": "#/parameters/linkParam" },
                 { "$ref": "#/parameters/typeIdPathParam" },
                 { "$ref": "#/parameters/entityIdPathParam" }
@@ -236,7 +244,10 @@
                         }
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },
@@ -248,7 +259,10 @@
                         "description": "No content"
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }
@@ -271,7 +285,16 @@
                         "description": "Created"
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad input data",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },
@@ -283,7 +306,16 @@
                         "description": "No Content"
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                     "400": {
+                        "description": "Bad input data",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }
@@ -307,7 +339,16 @@
                         "description": "No Content"
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad input data",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },
@@ -319,7 +360,10 @@
                         "description": "No content"
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }
@@ -429,10 +473,16 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Data"
+                        "description": "No Data. Everything went well"
                     },
                     "404": {
                         "description": "Not found"
+                    },
+                    "400": {
+                        "description": "Bad input data",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }
@@ -505,7 +555,10 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },
@@ -517,7 +570,10 @@
                         "description": "No Data"
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },
@@ -542,7 +598,16 @@
                         "description": "No Data"
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }

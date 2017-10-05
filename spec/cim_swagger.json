@@ -91,12 +91,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "headers": {
-                            "Link": {
-                                "description": "JSON-LD @context"
-                            }
-                        }
+                        "description": "OK"
                     },
                     "400": {
                         "description": "Bad input data"

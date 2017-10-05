@@ -18,72 +18,92 @@
         "title": "ETSI ISG CIM",
         "version": "0.6"
     },
+    "parameters": {
+        "linkParam": {
+            "name": "Link",
+            "in": "header",
+            "type": "string",
+            "description": "JSON-LD @context",
+            "required": "true"
+        },
+        "idParam": {
+            "name": "id",
+            "in": "query",
+            "type": "string",
+            "description": "List of entity ids"
+        },
+        "typeParam": {
+            "name": "type",
+            "in": "query",
+            "type": "string",
+            "description": "List of entity types"
+        },
+        "qParam": {
+            "name": "q",
+            "in": "query",
+            "type": "string",
+            "description": "Filter expression (query)"
+        },
+        "propertiesParam": {
+            "name": "properties",
+            "in": "query",
+            "type": "string",
+            "description": "List of properties"
+        },
+        "georelParam": {
+            "name": "georel",
+            "in": "query",
+            "type": "string",
+            "description": "Geospatial relationship"
+        },
+        "geometryParam": {
+            "name": "geometry",
+            "in": "query",
+            "type": "string",
+            "description": "Geometry represented by the coordinates parameter"
+        },
+        "coordinatesParam": {
+            "name": "coordinates",
+            "in": "query",
+            "type": "string",
+            "description": "List of pairs of coordinates (lng, lat) separated by a semicolon"
+        },
+        "optionsParam": {
+            "name": "options",
+            "in": "query",
+            "type": "string",
+            "description": "Modifier options"
+        },
+        "typeIdPathParam": {
+            "name": "typeId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Entity type name"
+        },
+        "entityIdPathParam": {
+            "name": "entityId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Entity identifier"
+        }
+    }, 
     "paths": {
         "/entities": {
             "get": {
                 "description": "Lists entities locally available in the system",
                 "operationId": "listEntities",
                 "parameters": [
-                    {
-                        "name": "Link",
-                        "in": "header",
-                        "type": "string",
-                        "description": "JSON-LD @context"
-                    },
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "type": "string",
-                        "description": "List of entity ids"
-                    },
-                    {
-                        "name": "type",
-                        "in": "query",
-                        "type": "string",
-                        "description": "List of entity types"
-                    },
-                    {
-                        "name": "q",
-                        "in": "query",
-                        "type": "string",
-                        "description": "Filter expression (query)"
-                    },
-                    {
-                        "name": "properties",
-                        "in": "query",
-                        "type": "string",
-                        "description": "List of properties"
-                    },
-                    {
-                        "name": "georel",
-                        "in": "query",
-                        "type": "string",
-                        "description": "Geospatial relationship"
-                    },
-                    {
-                        "name": "geometry",
-                        "in": "query",
-                        "type": "string",
-                        "description": "Geometry represented by the coordinates"
-                    },
-                    {
-                        "name": "coordinates",
-                        "in": "query",
-                        "type": "string",
-                        "description": "List of pairs of coordinates (long, lat) separated by a semicolon"
-                    },
-                    {
-                        "name": "options",
-                        "in": "query",
-                        "type": "string",
-                        "description": "Modifier options"
-                    },
-                    {
-                        "name": "Link",
-                        "in": "header",
-                        "type": "string",
-                        "description": "JSON-LD Context"
-                    }
+                    { "$ref": "#/parameters/linkParam" },
+                    { "$ref": "#/parameters/idParam" },
+                    { "$ref": "#/parameters/typeParam" },
+                    { "$ref": "#/parameters/qParam" },
+                    { "$ref": "#/parameters/propertiesParam" },
+                    { "$ref": "#/parameters/georelParam" },
+                    { "$ref": "#/parameters/geometryParam" },
+                    { "$ref": "#/parameters/coordinatesParam" },
+                    { "$ref": "#/parameters/optionsParam" }
                 ],
                 "produces": [
                     "application/ld+json",
@@ -117,7 +137,8 @@
                     {
                         "name": "Link",
                         "in": "header",
-                        "type": "string"
+                        "type": "string",
+                        "description": "JSON-LD @context"
                     }
                 ],
                 "responses": {
@@ -137,33 +158,16 @@
             "get": {
                 "description": "Lists entities which type is the one passed as parameter",
                 "operationId": "entitiesByType",
-                 "parameters": [
-                    {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "q",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "properties",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "options",
-                        "in": "query",
-                        "type": "string"
-                    }
+                "parameters": [
+                    { "$ref": "#/parameters/typeIdPathParam" },
+                    { "$ref": "#/parameters/linkParam" },
+                    { "$ref": "#/parameters/idParam" },
+                    { "$ref": "#/parameters/qParam" },
+                    { "$ref": "#/parameters/propertiesParam" },
+                    { "$ref": "#/parameters/georelParam" },
+                    { "$ref": "#/parameters/geometryParam" },
+                    { "$ref": "#/parameters/coordinatesParam" },
+                    { "$ref": "#/parameters/optionsParam" }
                 ],
                 "produces": [
                     "application/ld+json"
@@ -176,33 +180,13 @@
             }
         },
         "/entities/{typeId}/{entityId}": {
+             "parameters": [
+                { "$ref": "#/parameters/typeIdPathParam" },
+                { "$ref": "#/parameters/entityIdPathParam" }
+            ],
             "get": {
                 "description": "Retrieves an entity by type and identifier",
                 "operationId": "entitiesById",
-                 "parameters": [
-                    {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                     {
-                        "name": "entityId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "properties",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "options",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
                 "produces": [
                     "application/ld+json"
                 ],
@@ -243,6 +227,10 @@
             }
         },
         "/entities/{typeId}/{entityId}/properties": {
+            "parameters": [
+                { "$ref": "#/parameters/typeIdPathParam" },
+                { "$ref": "#/parameters/entityIdPathParam" }
+            ],
             "post": {
                 "responses": {
                     "201": {

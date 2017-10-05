@@ -170,11 +170,20 @@
                     { "$ref": "#/parameters/optionsParam" }
                 ],
                 "produces": [
-                    "application/ld+json"
+                    "application/ld+json",
+                    "application/json"
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "headers": {
+                            "Link": {
+                                "description": "JSON-LD Context"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
                     }
                 }
             }
@@ -188,11 +197,22 @@
                 "description": "Retrieves an entity by type and identifier",
                 "operationId": "entitiesById",
                 "produces": [
-                    "application/ld+json"
+                    "application/ld+json",
+                    "application/json"
+                ],
+                "parameters": [
+                    { "$ref": "#/parameters/typeIdPathParam" },
+                    { "$ref": "#/parameters/entityIdPathParam" },
+                    { "$ref": "#/parameters/propertiesParam" }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "headers": {
+                            "Link": {
+                                "description": "JSON-LD Context"
+                            }
+                        }
                     },
                     "404": {
                         "description": "Not Found"
@@ -202,20 +222,6 @@
             "delete": {
                 "description": "Deletes an entity by identifier",
                 "operationId": "deleteEntityById",
-                "parameters": [
-                    {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "entityId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
                     "204": {
                         "description": "No content"

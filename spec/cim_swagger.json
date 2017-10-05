@@ -75,7 +75,8 @@
                     {
                         "name": "options",
                         "in": "query",
-                        "type": "string"
+                        "type": "string",
+                        "description": "Modifier options"
                     },
                     {
                         "name": "Link",

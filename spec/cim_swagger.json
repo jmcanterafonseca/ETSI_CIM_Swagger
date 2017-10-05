@@ -87,6 +87,13 @@
             "required": true,
             "type": "string",
             "description": "Entity identifier"
+        },
+        "propertyIdPathParam": {
+            "name": "propertyId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Local property name"
         }
     }, 
     "paths": {
@@ -190,6 +197,7 @@
         },
         "/entities/{typeId}/{entityId}": {
              "parameters": [
+                { "$ref": "#/parameters/linkParam" },
                 { "$ref": "#/parameters/typeIdPathParam" },
                 { "$ref": "#/parameters/entityIdPathParam" }
             ],
@@ -201,6 +209,7 @@
                     "application/json"
                 ],
                 "parameters": [
+                    { "$ref": "#/parameters/linkParam" },
                     { "$ref": "#/parameters/typeIdPathParam" },
                     { "$ref": "#/parameters/entityIdPathParam" },
                     { "$ref": "#/parameters/propertiesParam" }
@@ -234,8 +243,13 @@
         },
         "/entities/{typeId}/{entityId}/properties": {
             "parameters": [
+                { "$ref": "#/parameters/linkParam" },
                 { "$ref": "#/parameters/typeIdPathParam" },
                 { "$ref": "#/parameters/entityIdPathParam" }
+            ],
+            "consumes": [
+                    "application/json",
+                    "application/ld+json"
             ],
             "post": {
                 "responses": {
@@ -259,29 +273,19 @@
             }
         },
         "/entities/{typeId}/{entityId}/properties/{propertyId}": {
+            "parameters": [
+                { "$ref": "#/parameters/linkParam" },
+                { "$ref": "#/parameters/typeIdPathParam" },
+                { "$ref": "#/parameters/entityIdPathParam" },
+                { "$ref": "#/parameters/propertyIdPathParam" }
+            ],
+            "consumes": [
+                "application/json",
+                "application/ld+json"
+            ],
             "patch": {
                 "description": "Updates a property of an entity",
                 "operationId": "updateEntityProperty",
-                "parameters": [
-                    {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "entityId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "propertyId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
                     "204": {
                         "description": "No Content"
@@ -294,26 +298,6 @@
             "delete": {
                 "description": "Deletes a property of an entity",
                 "operationId": "deleteEntityProperty",
-                 "parameters": [
-                     {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "entityId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "propertyId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
                 "responses": {
                     "204": {
                         "description": "No content"

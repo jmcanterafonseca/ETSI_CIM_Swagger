@@ -91,7 +91,12 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "headers": {
+                            "Link": {
+                                "description": "JSON-LD @context"
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad input data"
@@ -577,7 +582,7 @@
     "schemes": [
         "http"
     ],
-    "swagger": "2.0",
+    "swagger": "3.0",
     "tags": [
         {
             "description": "ETSI ISG CIM API",

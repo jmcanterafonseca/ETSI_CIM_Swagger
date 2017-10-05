@@ -27,42 +27,50 @@
                     {
                         "name": "Link",
                         "in": "header",
-                        "type": "string"
+                        "type": "string",
+                        "description": "JSON-LD @context"
                     },
                     {
                         "name": "id",
                         "in": "query",
-                        "type": "string"
+                        "type": "string",
+                        "description": "List of entity ids"
                     },
                     {
                         "name": "type",
                         "in": "query",
-                        "type": "string"
+                        "type": "string",
+                        "description": "List of entity types"
                     },
                     {
                         "name": "q",
                         "in": "query",
-                        "type": "string"
+                        "type": "string",
+                        "description": "Filter expression (query)"
                     },
                     {
                         "name": "properties",
                         "in": "query",
-                        "type": "string"
+                        "type": "string",
+                        "description": "List of properties"
                     },
                     {
-                      "name": "georel",
-                      "in": "query",
-                      "type": "string"
+                        "name": "georel",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Geospatial relationship"
                     },
                     {
                         "name": "geometry",
                         "in": "query",
-                        "type": "string"
+                        "type": "string",
+                        "description": "Geometry represented by the coordinates"
                     },
                     {
                         "name": "coordinates",
                         "in": "query",
-                        "type": "string"
+                        "type": "string",
+                        "description": "List of pairs of coordinates (long, lat) separated by a semicolon"
                     },
                     {
                         "name": "options",
@@ -72,7 +80,8 @@
                     {
                         "name": "Link",
                         "in": "header",
-                        "type": "string"
+                        "type": "string",
+                        "description": "JSON-LD Context"
                     }
                 ],
                 "produces": [
@@ -84,7 +93,7 @@
                         "description": "OK",
                         "headers": {
                             "Link": {
-                                "description": "JSON-LD Schema"
+                                "description": "JSON-LD @context"
                             }
                         }
                     },

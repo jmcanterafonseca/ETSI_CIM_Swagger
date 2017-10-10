@@ -272,13 +272,13 @@
                 { "$ref": "#/parameters/typeIdPathParam" },
                 { "$ref": "#/parameters/entityIdPathParam" }
             ],
-            "consumes": [
-                    "application/json",
-                    "application/ld+json"
-            ],
             "post": {
                 "description": "Adds a new property to an entity",
                 "operationId": "addPropertyToEntity",
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -300,6 +300,10 @@
             "patch": {
                 "description": "Modifies one or more properties of an entity",
                 "operationId": "updateEntityProperties",
+                "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
                 "responses": {
                     "204": {
                         "description": "No Content"
@@ -326,13 +330,13 @@
                 { "$ref": "#/parameters/entityIdPathParam" },
                 { "$ref": "#/parameters/propertyIdPathParam" }
             ],
-            "consumes": [
-                "application/json",
-                "application/ld+json"
-            ],
             "patch": {
                 "description": "Modifies a property of an entity",
                 "operationId": "updateEntityProperty",
+                 "consumes": [
+                    "application/json",
+                    "application/ld+json"
+                ],
                 "responses": {
                     "204": {
                         "description": "No Content"

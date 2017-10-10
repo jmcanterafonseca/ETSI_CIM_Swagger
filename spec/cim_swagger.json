@@ -23,8 +23,7 @@
             "name": "Link",
             "in": "header",
             "type": "string",
-            "description": "JSON-LD @context",
-            "required": "true"
+            "description": "JSON-LD @context"
         },
         "idParam": {
             "name": "id",
@@ -45,7 +44,7 @@
             "description": "Filter expression (query)"
         },
         "propertiesParam": {
-            "name": "properties",
+            "name": "attrs",
             "in": "query",
             "type": "string",
             "description": "List of properties"
@@ -89,7 +88,7 @@
             "description": "Entity identifier"
         },
         "propertyIdPathParam": {
-            "name": "propertyId",
+            "name": "attributeId",
             "in": "path",
             "required": true,
             "type": "string",
@@ -178,7 +177,7 @@
                 }
             }
         },
-        "/entities/{typeId}": {
+        "/entitiesByType/{typeId}": {
             "get": {
                 "description": "Lists entities which type is the one passed as parameter",
                 "operationId": "entitiesByType",
@@ -215,7 +214,7 @@
                 }
             }
         },
-        "/entities/{typeId}/{entityId}": {
+        "/entitiesByType/{typeId}/{entityId}": {
             "parameters": [
                 { "$ref": "#/parameters/linkParam" },
                 { "$ref": "#/parameters/typeIdPathParam" },
@@ -267,7 +266,7 @@
                 }
             }
         },
-        "/entities/{typeId}/{entityId}/properties": {
+        "/entitiesByType/{typeId}/{entityId}/attrs": {
             "parameters": [
                 { "$ref": "#/parameters/linkParam" },
                 { "$ref": "#/parameters/typeIdPathParam" },
@@ -320,7 +319,7 @@
                 }
             }
         },
-        "/entities/{typeId}/{entityId}/properties/{propertyId}": {
+        "/entitiesbyType/{typeId}/{entityId}/attrs/{propertyId}": {
             "parameters": [
                 { "$ref": "#/parameters/linkParam" },
                 { "$ref": "#/parameters/typeIdPathParam" },

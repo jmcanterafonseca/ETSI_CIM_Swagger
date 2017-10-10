@@ -29,7 +29,7 @@
         },
         "ConditionData": {
             "properties": {
-                "properties": {
+                "attrs": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -46,7 +46,7 @@
             "type": "object"
         },
         "NotificationData": {
-            "properties": {
+            "attrs": {
                 "properties": {
                     "type": "array",
                     "items": {

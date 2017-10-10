@@ -41,7 +41,7 @@
                         "$ref": "#/definitions/EntityData"
                      }
                 },
-                "properties": {
+                "attrs": {
                     "type": "array",
                     "items": {
                         "type": "string"

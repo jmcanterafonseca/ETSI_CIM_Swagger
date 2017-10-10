@@ -46,8 +46,8 @@
             "type": "object"
         },
         "NotificationData": {
-            "attrs": {
-                "properties": {
+            "properties": {
+                "attrs": {
                     "type": "array",
                     "items": {
                         "type": "string"

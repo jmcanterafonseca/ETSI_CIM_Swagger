@@ -371,6 +371,18 @@
                 }
             }
         },
+        "/relationships": {
+             "post": {
+                "consumes": [
+                    "application/json"
+                ]
+             },
+             "get": {
+                "produces": [
+                    "application/json"
+                ]
+             }
+        },
         "/csources": {
             "post": {
                 "consumes": [

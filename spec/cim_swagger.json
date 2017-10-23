@@ -323,7 +323,7 @@
                 }
             }
         },
-        "/entitiesbyType/{typeId}/{entityId}/attrs/{propertyId}": {
+        "/entitiesByType/{typeId}/{entityId}/attrs/{propertyId}": {
             "parameters": [
                 { "$ref": "#/parameters/linkParam" },
                 { "$ref": "#/parameters/typeIdPathParam" },

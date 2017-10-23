@@ -58,14 +58,11 @@
                     "format": "date-time",
                     "type": "string"
                 },
-                "source": {
+                "description": {
+                    "type": "string"
+                },
+                "provider": {
                     "properties": {
-                        "name": {
-                            "type": "string"
-                        },
-                        "description": {
-                            "type": "string"
-                        },
                         "scope": {
                             "properties": {
                                 "geo": {

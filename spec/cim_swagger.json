@@ -16,7 +16,7 @@
         },
         "termsOfService": "http://swagger.io/terms/",
         "title": "ETSI ISG CIM",
-        "version": "0.6"
+        "version": "0.9"
     },
     "parameters": {
         "linkParam": {
@@ -144,8 +144,8 @@
                 }
             },
             "post": {
-                "description": "Allows to provide one or more entity(ies)",
-                "operationId": "createEntities",
+                "description": "Allows to provide one entity",
+                "operationId": "createEntity",
                 "consumes": [
                     "application/json",
                     "application/ld+json"
@@ -175,80 +175,6 @@
                         }
                     }
                 }
-            }
-        },
-        "/entitiesByType/{typeId}": {
-            "get": {
-                "description": "Lists entities which type is the one passed as parameter",
-                "operationId": "entitiesByType",
-                "parameters": [
-                    { "$ref": "#/parameters/typeIdPathParam" },
-                    { "$ref": "#/parameters/linkParam" },
-                    { "$ref": "#/parameters/idParam" },
-                    { "$ref": "#/parameters/qParam" },
-                    { "$ref": "#/parameters/propertiesParam" },
-                    { "$ref": "#/parameters/georelParam" },
-                    { "$ref": "#/parameters/geometryParam" },
-                    { "$ref": "#/parameters/coordinatesParam" },
-                    { "$ref": "#/parameters/optionsParam" }
-                ],
-                "produces": [
-                    "application/ld+json",
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "headers": {
-                            "Link": {
-                                "description": "JSON-LD Context"
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not found",
-                        "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/entitiesByType/{typeId}/{entityId}": {
-            "parameters": [
-                { "$ref": "#/parameters/linkParam" },
-                { "$ref": "#/parameters/typeIdPathParam" },
-                { "$ref": "#/parameters/entityIdPathParam" }
-            ],
-            "get": {
-                "description": "Retrieves an entity by type and identifier",
-                "operationId": "entitiesById",
-                "produces": [
-                    "application/ld+json",
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#/parameters/linkParam" },
-                    { "$ref": "#/parameters/typeIdPathParam" },
-                    { "$ref": "#/parameters/entityIdPathParam" },
-                    { "$ref": "#/parameters/propertiesParam" }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "headers": {
-                            "Link": {
-                                "description": "JSON-LD Context"
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
-                        }
-                    }
-                }
             },
             "delete": {
                 "description": "Deletes an entity by identifier",
@@ -266,14 +192,13 @@
                 }
             }
         },
-        "/entitiesByType/{typeId}/{entityId}/attrs": {
+        "/entities//{entityId}/attrs": {
             "parameters": [
                 { "$ref": "#/parameters/linkParam" },
-                { "$ref": "#/parameters/typeIdPathParam" },
                 { "$ref": "#/parameters/entityIdPathParam" }
             ],
             "post": {
-                "description": "Adds a new property to an entity",
+                "description": "Adds a new attribute to an entity",
                 "operationId": "addPropertyToEntity",
                 "consumes": [
                     "application/json",
@@ -298,7 +223,7 @@
                 }
             },
             "patch": {
-                "description": "Modifies one or more properties of an entity",
+                "description": "Modifies one or more attributes of an entity",
                 "operationId": "updateEntityProperties",
                 "consumes": [
                     "application/json",
@@ -323,15 +248,14 @@
                 }
             }
         },
-        "/entitiesByType/{typeId}/{entityId}/attrs/{propertyId}": {
+        "/entities/{entityId}/attrs/{propertyId}": {
             "parameters": [
                 { "$ref": "#/parameters/linkParam" },
-                { "$ref": "#/parameters/typeIdPathParam" },
                 { "$ref": "#/parameters/entityIdPathParam" },
                 { "$ref": "#/parameters/propertyIdPathParam" }
             ],
             "patch": {
-                "description": "Modifies a property of an entity",
+                "description": "Modifies an attribute of an entity",
                 "operationId": "updateEntityProperty",
                  "consumes": [
                     "application/json",
@@ -356,7 +280,7 @@
                 }
             },
             "delete": {
-                "description": "Deletes a property of an entity",
+                "description": "Deletes an attribute of an entity",
                 "operationId": "deleteEntityProperty",
                 "responses": {
                     "204": {
@@ -370,18 +294,6 @@
                     }
                 }
             }
-        },
-        "/relationships": {
-             "post": {
-                "consumes": [
-                    "application/json"
-                ]
-             },
-             "get": {
-                "produces": [
-                    "application/json"
-                ]
-             }
         },
         "/csources": {
             "post": {

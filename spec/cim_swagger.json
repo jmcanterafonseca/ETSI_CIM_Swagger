@@ -394,30 +394,40 @@
         },
         "/csources": {
             "post": {
-                "consumes": [
-                    "application/json"
-                ],
-                "description": "Registers a new context source",
+                "description": "Registers a new context source within an NGSI-LD system",
                 "operationId": "registerCsource",
                 "parameters": [
                     {
-                        "in":   "body",
                         "name": "CsourceData",
+                        "description": "Payload body in the request contains a JSON-LD object which represents the context source registration that is to be created",
+                        "in":   "body",
                         "required": true,
                         "schema": {
                             "$ref": "cim_schema.json#/definitions/CsourceData"
                         }
                     }
                 ],
-                "produces": [
+                "consumes": [
                     "application/json"
                 ],
                 "responses": {
                     "201": {
-                      "description": "Registration created"  
+                        "description": "Created"
                     },
                     "400": {
-                        "description": "Invalid input",
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Already exists",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Context Source Registration",
                         "schema": {
                             "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
                         }

@@ -130,24 +130,45 @@
                 }
             }
         },
-        "/entities/{typeId}": {
+        "/entities/{entityId}": {
             "get": {
-                "description": "Lists entities which type is the one passed as parameter",
-                "operationId": "entitiesByType",
+                "description": "Retrieve an specific entity from an NGSI-LD system",
+                "operationId": "retrieveEntityById",
                  "parameters": [
                     {
-                        "name": "typeId",
+                        "name": "entityId",
                         "in": "path",
                         "required": true,
                         "type": "string"
-                    }
+                    },{
+                       "name": "attrs",
+                       "in": "query",
+                       "required": false,
+                       "type": "string",
+                       "description": "Comma separated list of attribute names (properties or relationships)"
+                   }
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "schema": {
+                          "$ref": "cim_schema.json#/definitions/Entity"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                           "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }

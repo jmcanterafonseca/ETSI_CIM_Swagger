@@ -97,13 +97,17 @@
                 "operationId": "createEntity",
                 "parameters": [
                     {
-                        "in":   "body",
                         "name": "EntityCreationData",
+                        "description": "Payload body in the request contains a JSON-LD object which represents the entity that is to be created",
+                        "in":   "body",
                         "required": true,
                         "schema": {
                             "$ref": "cim_schema.json#/definitions/EntityCreationData"
                         }
                     }
+                ],
+                "consumes": [
+                    "application/json"
                 ],
                 "responses": {
                     "201": {
@@ -145,7 +149,7 @@
                        "in": "query",
                        "required": false,
                        "type": "string",
-                       "description": "Comma separated list of attribute names (properties or relationships)"
+                       "description": "Comma separated list of attribute names (properties or relationships) to be included in the response"
                    }
                 ],
                 "produces": [
@@ -185,7 +189,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content"
+                        "description": "No Content. The entity was deleted successfully"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -218,14 +222,26 @@
                         "in": "query",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "entityFragment",
+                        "description": "Entity Fragment containing a complete representation of the attributes to be added",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/entityFragment"
+                        }
                     }
+                ],
+                "consumes": [
+                    "application/json"
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content. All the attributes were appended successfully."
+                        "description": "No Content. All the attributes were appended successfully"
                     },
                     "207": {
-                        "description": "Multi-Status. Only the attributes included in the response payload were successfully appended.",
+                        "description": "Multi-Status. Only the attributes included in the response payload were successfully appended",
                         "schema": {
                             "$ref": "cim_schema.json#/definitions/EntityAttrList"
                         }
@@ -256,6 +272,7 @@
                     },
                     {
                         "name": "entityFragment",
+                        "description": "Entity Fragment containing a complete representation of the attributes to be updated",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -263,12 +280,15 @@
                         }
                     }
                 ],
+                "consumes": [
+                    "application/json"
+                ],
                 "responses": {
                     "204": {
-                        "description": "No Content. All the attributes were appended successfully."
+                        "description": "No Content. All the attributes were appended successfully"
                     },
                     "207": {
-                        "description": "Multi-Status. Only the attributes included in the response payload were successfully appended.",
+                        "description": "Multi-Status. Only the attributes included in the response payload were successfully appended",
                         "schema": {
                             "$ref": "cim_schema.json#/definitions/EntityAttrList"
                         }
@@ -315,9 +335,12 @@
                         }
                     }
                 ],
+                "consumes": [
+                    "application/json"
+                ],
                 "responses": {
                     "204": {
-                      "description": "No Content. The attribute was updated successfully."
+                      "description": "No Content. The attribute was updated successfully"
                     },
                     "400": {
                       "description": "Bad Request",
@@ -352,7 +375,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content. The attribute was deleted successfully."
+                        "description": "No Content. The attribute was deleted successfully"
                     },
                     "400": {
                         "description": "Bad Request",

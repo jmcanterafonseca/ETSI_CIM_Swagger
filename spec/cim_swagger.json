@@ -171,6 +171,35 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "description": "Delete an specific entity from an NGSI-LD system",
+                "operationId": "deleteEntityById",
+                "parameters": [
+                    {
+                        "name": "entityId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    }
+                }
             }
         },
         "/entities/{typeId}/{entityId}": {

@@ -93,17 +93,39 @@
                 }
             },
             "post": {
-                "description": "Allows to provide one or more entity(ies)",
-                "operationId": "createEntities",
-                "produces": [
-                    "application/json"
+                "description": "Create a new entity within an NGSI-LD system",
+                "operationId": "createEntity",
+                "parameters": [
+                    {
+                        "in":   "body",
+                        "name": "EntityCreationData",
+                        "required": true,
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/EntityCreationData"
+                        }
+                    }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
                     "201": {
                         "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Already exists",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                           "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }

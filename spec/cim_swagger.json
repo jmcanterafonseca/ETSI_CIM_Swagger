@@ -521,7 +521,7 @@
         },
         "/csources/{registrationId}": {
             "get": {
-                "description": "Retrieves the data of a particular context source registration",
+                "description": "Retrieves a specific context source registration from an NGSI-LD system",
                 "operationId": "retrieveCsource",
                 "parameters": [
                     {
@@ -541,8 +541,17 @@
                             "$ref": "cim_schema.json#/definitions/CsourceDescription"
                         }
                     },
+                    "400": {
+                      "description": "Bad Request",
+                      "schema": {
+                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                      }
+                    },
                     "404": {
-                        "description": "Not found"
+                      "description": "Not Found",
+                      "schema": {
+                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                      }
                     }
                 }
             },
@@ -562,7 +571,7 @@
                         "description": "No Data"
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not Found"
                     }
                 }
             },
@@ -590,7 +599,7 @@
                         "description": "No Data"
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not Found"
                     }
                 }
             }
@@ -666,7 +675,7 @@
                         }
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not Found"
                     }
                 }
             },
@@ -686,7 +695,7 @@
                         "description": "No Data"
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not Found"
                     }
                 }
             },
@@ -714,7 +723,7 @@
                         "description": "No Data"
                     },
                     "404": {
-                        "description": "Not found"
+                        "description": "Not Found"
                     }
                 }
             }

@@ -288,17 +288,11 @@
                 }
             }
         },
-        "/entities/{typeId}/{entityId}/properties/{propertyId}": {
-            "get": {
-                "description": "Lists a property of an entity",
-                "operationId": "entityProperty",
-                 "parameters": [
-                    {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
+        "/entities/{entityId}/attrs/{attrId}": {
+            "patch": {
+                "description": "Update existing entity attributes within an NGSI-LD system",
+                "operationId": "partialAttrUpdate",
+                "parameters": [
                     {
                         "name": "entityId",
                         "in": "path",
@@ -306,28 +300,36 @@
                         "type": "string"
                     },
                     {
-                        "name": "propertyId",
+                        "name": "attrId",
                         "in": "path",
                         "required": true,
                         "type": "string"
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
                     },
-                    "404": {
-                        "description": "Not Found"
+                    {
+                        "name": "entityFragment",
+                        "description": "Entity Fragment containing the elements of the attribute to be updated",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                          "$ref": "cim_schema.json#/definitions/entityFragment"
+                        }
                     }
-                }
-            },
-            "patch": {
+                ],
                 "responses": {
                     "204": {
-                        "description": "No Content"
+                      "description": "No Content. The attribute was updated successfully."
+                    },
+                    "400": {
+                      "description": "Bad Request",
+                      "schema": {
+                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                      }
+                    },
+                    "404": {
+                      "description": "Not Found",
+                      "schema": {
+                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                      }
                     }
                 }
             },

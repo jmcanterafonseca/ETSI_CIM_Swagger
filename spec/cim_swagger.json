@@ -202,33 +202,45 @@
                 }
             }
         },
-        "/entities/{typeId}/{entityId}/properties": {
-            "get": {
-                "description": "Lists the properties and values of a particular entity",
-                "operationId": "entityProperties",
+        "/entities/{entityId}/attrs": {
+            "post": {
+                "description": "Append new entity attributes to an existing entity within an NGSI-LD system",
+                "operationId": "appendEntityAttrs",
                 "parameters": [
-                    {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
                     {
                         "name": "entityId",
                         "in": "path",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "noOverwrite",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
                     }
                 ],
-                "produces": [
-                    "application/json"
-                ],
                 "responses": {
-                    "200": {
-                        "description": "OK"
+                    "204": {
+                        "description": "No Content. All the attributes were appended successfully."
+                    },
+                    "207": {
+                        "description": "Multi-Status. Only the attributes included in the response payload were successfully appended.",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/EntityAttrList"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },

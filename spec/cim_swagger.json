@@ -334,37 +334,37 @@
                 }
             },
             "delete": {
-                "description": "Deletes a property of an entity",
-                "operationId": "deleteEntityProperty",
-                 "parameters": [
+                "description": "Delete an existing entity attribute within an NGSI-LD system",
+                "operationId": "deleteEntityAttr",
+                "parameters": [
                      {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "entityId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "propertyId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "produces": [
-                    "application/json"
+                         "name": "entityId",
+                         "in": "path",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "name": "attrId",
+                         "in": "path",
+                         "required": true,
+                         "type": "string"
+                     }
                 ],
                 "responses": {
                     "204": {
-                        "description": "No content"
+                        "description": "No Content. The attribute was deleted successfully."
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }

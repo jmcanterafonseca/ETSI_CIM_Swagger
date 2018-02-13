@@ -244,17 +244,46 @@
                     }
                 }
             },
-            "post": {
-                "responses": {
-                    "201": {
-                        "description": "Created"
-                    }
-                }
-            },
             "patch": {
+                "description": "Update existing entity attributes within an NGSI-LD system",
+                "operationId": "updateEntityAttrs",
+                "parameters": [
+                    {
+                        "name": "entityId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "entityFragment",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/entityFragment"
+                        }
+                    }
+                ],
                 "responses": {
                     "204": {
-                        "description": "No Content"
+                        "description": "No Content. All the attributes were appended successfully."
+                    },
+                    "207": {
+                        "description": "Multi-Status. Only the attributes included in the response payload were successfully appended.",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/EntityAttrList"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }

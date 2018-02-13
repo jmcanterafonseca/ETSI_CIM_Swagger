@@ -49,6 +49,12 @@
                         "type": "string",
                         "description": "Comma separated list of attribute names (properties or relationships)"
                     },{
+                        "name": "q",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Query"
+                    },{
                         "name": "georel",
                         "in": "query",
                         "required": false,
@@ -435,8 +441,65 @@
                 }
             },
             "get": {
-                "description": "Lists context sources available in the system",
-                "operationId": "listCsources",
+                "description": "Retrieve a set of context sources which matches a specific query from an NGSI-LD system",
+                "operationId": "queryCsources",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Comma separated list of URIs"
+                    },{
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Comma separated list of context sources type names"
+                    },{
+                        "name": "idPattern",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Regular expression that must be matched by context source ids"
+                    },{
+                        "name": "attrs",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Comma separated list of attribute names (properties or relationships)"
+                    },{
+                        "name": "q",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Query"
+                    },{
+                        "name": "georel",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Geo-relationship"
+                    },{
+                        "name": "geometry",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Geometry"
+                    },{
+                        "name": "coordinates",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Coordinates serialized as a string"
+                    },{
+                        "name": "geoproperty",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "The name of the property that contains the geo-spatial data that will be used to resolve the geo-query"
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -445,6 +508,12 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "cim_schema.json#/definitions/CsourceDescriptionList"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }

@@ -556,7 +556,7 @@
                 }
             },
             "delete": {
-                "description": "Removes a particular context source registration",
+                "description": "Removes an specific context source registration within an NGSI-LD system",
                 "operationId": "removeCsource",
                 "parameters": [
                     {
@@ -568,15 +568,24 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Data"
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },
             "patch": {
-                "description": "Updates a particular context source registration within an NGSI-LD system",
+                "description": "Updates a specific context source registration within an NGSI-LD system",
                 "operationId": "updateCsource",
                 "parameters": [
                     {

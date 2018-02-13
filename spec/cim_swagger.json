@@ -202,66 +202,6 @@
                 }
             }
         },
-        "/entities/{typeId}/{entityId}": {
-            "get": {
-                "description": "Retrieves an entity by type and identifier",
-                "operationId": "entitiesById",
-                 "parameters": [
-                    {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                     {
-                        "name": "entityId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                }
-            },
-            "delete": {
-                "description": "Deletes an entity by identifier",
-                "operationId": "deleteEntityById",
-                "parameters": [
-                    {
-                        "name": "typeId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "entityId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "201": {
-                        "description": "No data"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                }
-            }
-        },
         "/entities/{typeId}/{entityId}/properties": {
             "get": {
                 "description": "Lists the properties and values of a particular entity",

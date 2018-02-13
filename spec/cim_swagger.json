@@ -576,7 +576,7 @@
                 }
             },
             "patch": {
-                "description": "Updates a particular context source registration",
+                "description": "Updates a particular context source registration within an NGSI-LD system",
                 "operationId": "updateCsource",
                 "parameters": [
                     {
@@ -586,7 +586,8 @@
                         "type": "string"
                     },
                     {
-                        "name": "body",
+                        "name": "csourceRegistrationFragment",
+                        "description": "Payload body in the request contains a JSON-LD object which represents the context source registration that is to be updated",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -594,12 +595,30 @@
                         }
                     }
                 ],
+                "consumes": [
+                    "application/json"
+                ],
                 "responses": {
                     "204": {
-                        "description": "No Data"
+                       "description": "No Content. All the context source registration attributes were updated successfully"
+                    },
+                    "207": {
+                        "description": "Multi-Status. Only the attributes included in the response payload were successfully updated",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/EntityAttrList"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }

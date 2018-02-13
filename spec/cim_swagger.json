@@ -21,14 +21,74 @@
     "paths": {
         "/entities": {
             "get": {
-                "description": "Lists entities locally available in the system",
-                "operationId": "listEntities",
+                "description": "Retrieve a set of entities which matches a specific query from an NGSI-LD system",
+                "operationId": "queryEntities",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Comma separated list of URIs"
+                    },{
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Comma separated list of entity type names"
+                    },{
+                        "name": "idPattern",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Regular expression that must be matched by entity ids"
+                    },{
+                        "name": "attrs",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Comma separated list of attribute names (properties or relationships)"
+                    },{
+                        "name": "georel",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Geo-relationship"
+                    },{
+                        "name": "geometry",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Geometry"
+                    },{
+                        "name": "coordinates",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "Coordinates serialized as a string"
+                    },{
+                        "name": "geoproperty",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "The name of the property that contains the geo-spatial data that will be used to resolve the geoquery"
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/EntityList"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },

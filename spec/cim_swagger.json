@@ -701,7 +701,7 @@
         },
         "/subscriptions/{subscriptionId}": {
             "get": {
-                "description": "Retrieves the data of a particular subscription",
+                "description": "Retrieves a specific subscription from an NGSI-LD system",
                 "operationId": "retrieveSubscription",
                 "parameters": [
                     {
@@ -721,8 +721,17 @@
                             "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionDescription"
                         }
                     },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },

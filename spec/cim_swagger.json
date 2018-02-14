@@ -609,7 +609,7 @@
                 ],
                 "responses": {
                     "204": {
-                       "description": "No Content. All the context source registration attributes were updated successfully"
+                       "description": "No Content. The context source registration was successfully updated."
                     },
                     "207": {
                         "description": "Multi-Status. Only the attributes included in the response payload were successfully updated",
@@ -634,30 +634,34 @@
         },
         "/subscriptions": {
             "post": {
-                "consumes": [
-                    "application/json"
-                ],
-                "description": "Creates a new subscription",
+                "description": "Creates a new subscription within an NGSI-LD system",
                 "operationId": "createSubscription",
                 "parameters": [
                     {
                         "in":   "body",
                         "name": "SubscriptionData",
+                        "description": "Payload body in the request contains a JSON-LD object which represents the subscription that is to be created",
                         "required": true,
                         "schema": {
                             "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionData"
                         }
                     }
                 ],
-                "produces": [
+                "consumes": [
                     "application/json"
                 ],
                 "responses": {
                     "201": {
-                      "description": "Subscription created"  
+                      "description": "Created"
                     },
                     "400": {
-                        "description": "Invalid input",
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Already exists",
                         "schema": {
                             "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
                         }
@@ -665,8 +669,17 @@
                 }
             },
             "get": {
-                "description": "Lists subscriptions available in the system",
+                "description": "Lists subscriptions available in an NGSI-LD system",
                 "operationId": "listSubscriptions",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "description": "Maximum number of subscriptions to be retrieved",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -676,6 +689,12 @@
                         "schema": {
                             "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionDescriptionList"
                         }
+                    },
+                    "400": {
+                      "description": "Bad Request",
+                      "schema": {
+                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                      }
                     }
                 }
             }

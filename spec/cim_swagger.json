@@ -811,6 +811,73 @@
                     }
                 }
             }
+        },
+        "/csourceSubscriptions": {
+            "post": {
+                "description": "Creates a context source discovery subscription within an NGSI-LD system",
+                "operationId": "createCSourceSubscription",
+                "parameters": [
+                    {
+                        "in":   "body",
+                        "name": "Subscription",
+                        "description": "Payload body in the request contains a JSON-LD object which represents the context source discovery subscription that is to be created",
+                        "required": true,
+                        "schema": {
+                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionData"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Already exists",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "description": "Lists context source discovery subscriptions available in an NGSI-LD system",
+                "operationId": "listCSourceSubscriptions",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "description": "Maximum number of subscriptions to be retrieved",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionDescriptionList"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "schemes": [

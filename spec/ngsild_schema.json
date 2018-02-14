@@ -1,0 +1,420 @@
+{
+    "definitions": {
+        "ApiErrorResponse": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "detail": {
+                    "type": "string"
+                }
+            }
+        },
+
+
+        "CPropertyCommonData": {
+            "type": "object",
+            "properties": {
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "unitCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "CPropertySystemData": {
+            "type": "object",
+            "required": ["dateCreated", "dateModified"],
+            "properties": {
+                "dateCreated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dateModified": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "CProperty": {
+            "allOf": [
+              {
+                  "type": "object",
+                  "required": ["type", "value"],
+                  "properties": {
+                      "type": {
+                          "type": "string",
+                          "enum": ["CProperty"]
+                      },
+                      "value": {}
+                  }
+              },
+              {
+                "$ref": "#/definitions/CPropertySystemData"
+              },
+              {
+                "$ref": "#/definitions/CPropertyCommonData"
+              }
+            ]
+        },
+
+
+        "CRelationshipCommonData": {
+            "type": "object",
+            "properties": {
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "CRelationshipSystemData": {
+            "type": "object",
+            "properties": {
+                "dateCreated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dateModified": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "CRelationship": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "required": ["type", "object"],
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": ["CRelationship"]
+                        },
+                        "object": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/CRelationshipSystemData"
+                },
+                {
+                    "$ref": "#/definitions/CRelationshipCommonData"
+                }
+            ]
+        },
+
+
+        "EntityInfo": {
+            "anyOf": [
+                {
+                    "type": "object",
+                    "required": ["id"],
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "required": ["idPattern"],
+                    "properties": {
+                        "idPattern": {
+                            "type": "string"
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "required": ["type"],
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+
+
+        "RegistrationInfo": {
+            "type": "object",
+            "required": ["entities"],
+            "properties": {
+                "entities": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/EntityInfo"
+                    }
+                },
+                "properties": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "relationships": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                }
+            }
+        },
+
+
+        "TimeInterval" : {
+            "type": "object",
+            "required": ["start"],
+            "properties": {
+                "start": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "end": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+            }
+        },
+
+
+        "GeoQuery" : {
+            "type": "object",
+            "required": ["geometry","coordinates","georel"],
+            "properties": {
+                "geometry": {
+                    "type": "string"
+                },
+                "coordinates": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string"
+                    }
+                },
+                "georel": {
+                    "type": "string"
+                }
+            }
+        },
+
+
+        "EndPoint" : {
+            "type": "object",
+            "required": ["uri"],
+            "properties": {
+                "uri": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "accept": {
+                    "type": "string",
+                    "enum": ["application/json", "application/ld+json"]
+                }
+            }
+        },
+
+
+        "NotificationParams": {
+            "type": "object",
+            "required": ["endpoint"],
+            "properties": {
+                "attributes": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "format": {
+                    "type": "string"
+                },
+                "endpoint": {
+                    "$ref": "#/definitions/EndPoint"
+                },
+                "timesSent": {
+                    "type": "number",
+                    "minimum": 0
+                },
+                "lastNotification": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastFailure": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "lastSuccess": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+            }
+        },
+
+
+        "Entity": {
+            "type": "object",
+            "required": ["id", "type", "dateCreated", "dateModified"],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "type": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "location": {
+                    "$ref": "#/definitions/CProperty"
+                },
+                "observationSpace": {
+                    "$ref": "#/definitions/CProperty"
+                },
+                "operationSpace": {
+                    "$ref": "#/definitions/CProperty"
+                },
+                "@context": {
+                    "type": ["string","object","array"]
+                },
+                "dateCreated": {
+                    "$ref": "#/definitions/CProperty"
+                },
+                "dateModified": {
+                    "$ref": "#/definitions/CProperty"
+                }
+            }
+        },
+
+
+        "Subscription": {
+            "type": "object",
+            "required": ["type","entities","q"],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["Subscription"]
+                },
+                "description": {
+                    "type": "string"
+                },
+                "entities": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/EntityInfo"
+                    }
+                },
+                "watchedAttributes": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "timeInterval": {
+                    "type": "number"
+                },
+                "q": {
+                    "type": "string"
+                },
+                "geoQ": {
+                    "$ref": "#/definitions/GeoQuery"
+                },
+                "notification": {
+                    "$ref": "#/definitions/NotificationParams"
+                },
+                "expires": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["active","inactive","failed","expired"]
+                },
+                "throttling": {
+                    "type": "number",
+                    "minimum": 0,
+                    "exclusiveMinimum": true
+                },
+                "@context": {
+                    "type": ["string","object","array"]
+                },
+                "dateCreated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dateModified": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+
+
+        "CsourceRegistration": {
+            "type": "object",
+            "required": ["endpoint","type","information"],
+            "properties": {
+                "endpoint": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "information": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/definitions/RegistrationInfo"
+                    }
+                },
+                "timestamp": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/definitions/TimeInterval"
+                    }
+                },
+                "location": {
+                    "$ref": "http://json.schemastore.org/geojson#/definitions/geometry"
+                },
+                "expires": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -736,7 +736,7 @@
                 }
             },
             "delete": {
-                "description": "Removes a particular subscription",
+                "description": "Removes a specific subscription from an NGSI-LD system",
                 "operationId": "removeSubscription",
                 "parameters": [
                     {
@@ -748,15 +748,24 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Data"
+                        "description": "No Content. The subscription was deleted successfully"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             },
             "patch": {
-                "description": "Updates a particular subscription",
+                "description": "Updates a specific subscription within an NGSI-LD system",
                 "operationId": "updateSubscription",
                 "parameters": [
                     {
@@ -766,7 +775,8 @@
                         "type": "string"
                     },
                     {
-                        "name": "body",
+                        "name": "subscriptionFragment",
+                        "description": "Subscription Fragment including id, type and any other subscription field to be changed",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -774,12 +784,30 @@
                         }
                     }
                 ],
+                "consumes": [
+                    "application/json"
+                ],
                 "responses": {
                     "204": {
-                        "description": "No Data"
+                        "description": "No Content. The subscription was updated successfully"
+                    },
+                    "207": {
+                        "description": "Multi-Status. Only the attributes included in the response payload were successfully updated",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/SubscriptionAttrList"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     },
                     "404": {
-                        "description": "Not Found"
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        }
                     }
                 }
             }

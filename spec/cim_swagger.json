@@ -1,23 +1,72 @@
 {
-    "basePath": "/v1",
-    "externalDocs": {
-        "description": "Find out more about ETSI ISG CIM",
-        "url": "https://portal.etsi.org/tb.aspx?tbid=854&SubTB=854"
-    },
-    "host": "tbd.swagger.io",
+    "swagger": "2.0",
     "info": {
+        "description": "This swagger file describes the NGSI-LD API defined by the ETSI ISG CIM group. This Cross-domain Context Information Management API allows to provide, consume and subscribe to context information in multiple scenarios and involving multiple stakeholders",
+        "version": "0.0.11",
+        "title": "ETSI ISG CIM / NGSI-LD API",
+        "termsOfService": "http://tbd.tbd/tbd/",
         "contact": {
             "email": "tbd@tdb.org"
         },
-        "description": "ETSI ISG CIM",
         "license": {
             "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        },
-        "termsOfService": "http://swagger.io/terms/",
-        "title": "ETSI ISG CIM",
-        "version": "0.6"
+        }
     },
+    "externalDocs": {
+        "description": "Find out more about the ETSI ISG Context Information Management",
+        "url": "https://portal.etsi.org/tb.aspx?tbid=854&SubTB=854"
+    },
+    "host": "tbd.tbd.tbd",
+    "basePath": "/v1",
+    "tags": [
+        {
+            "name": "ETSI",
+            "description": "European Telecommunications Standards Institute",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://www.etsi.org"
+            }
+        },{
+            "name": "CIM",
+            "description": "Context Information Management",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "https://portal.etsi.org/tb.aspx?tbid=854&SubTB=854"
+            }
+        },{
+            "name": "OMA",
+            "description": "Open Mobile Alliance",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://openmobilealliance.org"
+            }
+        },{
+            "name": "NSGI",
+            "description": "Next Generation Service Interfaces",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://openmobilealliance.org/wp-content/uploads/2012/11/Next-Generation-Service-Interfaces.pdf"
+            }
+        },{
+            "name": "JSON-LD",
+            "description": "JSON for Linking Data",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "https://json-ld.org/"
+            }
+        },{
+            "name": "NGSI-LD",
+            "description": "API defined by the ETSI ISG CIM",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://tbd.tbd/tbd/"
+            }
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
     "paths": {
         "/entities": {
             "get": {
@@ -26,58 +75,58 @@
                 "parameters": [
                     {
                         "name": "id",
+                        "description": "Comma separated list of URIs to be retrieved",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Comma separated list of URIs"
+                        "type": "string"
                     },{
                         "name": "type",
+                        "description": "Comma separated list of Entity type names to be retrieved",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Comma separated list of entity type names"
+                        "type": "string"
                     },{
                         "name": "idPattern",
+                        "description": "Regular expression that must be matched by Entity ids",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Regular expression that must be matched by entity ids"
+                        "type": "string"
                     },{
                         "name": "attrs",
+                        "description": "Comma separated list of attribute names (properties or relationships) to be retrieved",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Comma separated list of attribute names (properties or relationships)"
+                        "type": "string"
                     },{
                         "name": "q",
+                        "description": "Query",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Query"
+                        "type": "string"
                     },{
                         "name": "georel",
+                        "description": "Geo-relationship",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Geo-relationship"
+                        "type": "string"
                     },{
                         "name": "geometry",
+                        "description": "Geometry",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Geometry"
+                        "type": "string"
                     },{
                         "name": "coordinates",
+                        "description": "Coordinates serialized as a string",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Coordinates serialized as a string"
+                        "type": "string"
                     },{
                         "name": "geoproperty",
+                        "description": "The name of the property that contains the geo-spatial data that will be used to resolve the geoquery",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "The name of the property that contains the geo-spatial data that will be used to resolve the geoquery"
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -99,16 +148,16 @@
                 }
             },
             "post": {
-                "description": "Create a new entity within an NGSI-LD system",
+                "description": "Create a new Entity within an NGSI-LD system",
                 "operationId": "createEntity",
                 "parameters": [
                     {
-                        "name": "EntityCreationData",
-                        "description": "Payload body in the request contains a JSON-LD object which represents the entity that is to be created",
+                        "name": "EntityData",
+                        "description": "Payload body in the request contains a JSON-LD object which represents the Entity that is to be created",
                         "in":   "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/EntityCreationData"
+                            "$ref": "cim_schema.json#/definitions/EntityData"
                         }
                     }
                 ],
@@ -117,7 +166,15 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "Created"
+                        "description": "Created",
+                        "headers": {
+                            "Location" : {
+                                "schema": {
+                                  "type": "string"
+                                },
+                                "description": "Contains the resource URI of the created Entity"
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad request",
@@ -142,20 +199,21 @@
         },
         "/entities/{entityId}": {
             "get": {
-                "description": "Retrieve an specific entity from an NGSI-LD system",
+                "description": "Retrieve an specific Entity from an NGSI-LD system. It's possible to specify the Entity attributes to be retrieved by using query parameters",
                 "operationId": "retrieveEntityById",
                  "parameters": [
                     {
                         "name": "entityId",
+                        "description": "Id (URI) of the Entity to be retrieved",
                         "in": "path",
                         "required": true,
                         "type": "string"
                     },{
                        "name": "attrs",
+                        "description": "Comma separated list of attribute names (properties or relationships) to be included in the response",
                        "in": "query",
                        "required": false,
-                       "type": "string",
-                       "description": "Comma separated list of attribute names (properties or relationships) to be included in the response"
+                       "type": "string"
                    }
                 ],
                 "produces": [
@@ -183,11 +241,12 @@
                 }
             },
             "delete": {
-                "description": "Delete an specific entity from an NGSI-LD system",
-                "operationId": "deleteEntityById",
+                "description": "Removes an specific Entity from an NGSI-LD system",
+                "operationId": "removeEntityById",
                 "parameters": [
                     {
                         "name": "entityId",
+                        "description": "Id (URI) of the Entity to be removed",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -195,7 +254,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content. The entity was deleted successfully"
+                        "description": "No Content. The entity was removed successfully"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -214,17 +273,19 @@
         },
         "/entities/{entityId}/attrs": {
             "post": {
-                "description": "Append new entity attributes to an existing entity within an NGSI-LD system",
+                "description": "Append new Entity attributes to an existing Entity within an NGSI-LD system",
                 "operationId": "appendEntityAttrs",
                 "parameters": [
                     {
                         "name": "entityId",
+                        "description": "Id (URI) of the Entity where to append new attributes",
                         "in": "path",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "noOverwrite",
+                        "description": "Indicates that no attribute overwrite shall be performed",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -267,11 +328,12 @@
                 }
             },
             "patch": {
-                "description": "Update existing entity attributes within an NGSI-LD system",
+                "description": "Update existing Entity attributes within an NGSI-LD system",
                 "operationId": "updateEntityAttrs",
                 "parameters": [
                     {
                         "name": "entityId",
+                        "description": "Id (URI) of the Entity where to update the specified attributes",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -316,17 +378,19 @@
         },
         "/entities/{entityId}/attrs/{attrId}": {
             "patch": {
-                "description": "Update existing entity attributes within an NGSI-LD system",
+                "description": "Update existing Entity attributes within an NGSI-LD system",
                 "operationId": "partialAttrUpdate",
                 "parameters": [
                     {
                         "name": "entityId",
+                        "description": "Id (URI) of the Entity where to update the specified attribute",
                         "in": "path",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "attrId",
+                        "description": "Attribute name (property or relationship) to be updated",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -363,17 +427,19 @@
                 }
             },
             "delete": {
-                "description": "Delete an existing entity attribute within an NGSI-LD system",
-                "operationId": "deleteEntityAttr",
+                "description": "Removes an existing Entity attribute within an NGSI-LD system",
+                "operationId": "removeEntityAttr",
                 "parameters": [
                      {
                          "name": "entityId",
+                        "description": "Id (URI) of the Entity where to remove the specified attribute",
                          "in": "path",
                          "required": true,
                          "type": "string"
                      },
                      {
                          "name": "attrId",
+                         "description": "Attribute name (property or relationship) to be removed",
                          "in": "path",
                          "required": true,
                          "type": "string"
@@ -381,7 +447,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content. The attribute was deleted successfully"
+                        "description": "No Content. The attribute was removed successfully"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -418,7 +484,15 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "Created"
+                        "description": "Created",
+                        "headers": {
+                            "Location" : {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "description": "Contains the resource URI of the created context source registration resource"
+                            }
+                      }
                     },
                     "400": {
                         "description": "Bad request",
@@ -446,58 +520,58 @@
                 "parameters": [
                     {
                         "name": "id",
+                        "description": "Comma separated list of URIs to be retrieved",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Comma separated list of URIs"
+                        "type": "string"
                     },{
                         "name": "type",
+                        "description": "Comma separated list of context sources type names to be retrieved",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Comma separated list of context sources type names"
+                        "type": "string"
                     },{
                         "name": "idPattern",
+                        "description": "Regular expression that must be matched by context source ids",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Regular expression that must be matched by context source ids"
+                        "type": "string"
                     },{
                         "name": "attrs",
+                        "description": "Comma separated list of attribute names (properties or relationships) to be retrieved",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Comma separated list of attribute names (properties or relationships)"
+                        "type": "string"
                     },{
                         "name": "q",
+                        "description": "Query",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Query"
+                        "type": "string"
                     },{
                         "name": "georel",
+                        "description": "Geo-relationship",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Geo-relationship"
+                        "type": "string"
                     },{
                         "name": "geometry",
+                        "description": "Geometry",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Geometry"
+                        "type": "string"
                     },{
                         "name": "coordinates",
+                        "description": "Coordinates serialized as a string",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "Coordinates serialized as a string"
+                        "type": "string"
                     },{
                         "name": "geoproperty",
+                        "description": "The name of the property that contains the geo-spatial data that will be used to resolve the geo-query",
                         "in": "query",
                         "required": false,
-                        "type": "string",
-                        "description": "The name of the property that contains the geo-spatial data that will be used to resolve the geo-query"
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -526,6 +600,7 @@
                 "parameters": [
                     {
                         "name": "registrationId",
+                        "description": "Id (URI) of the context source registration to be retrieved",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -561,6 +636,7 @@
                 "parameters": [
                     {
                         "name": "registrationId",
+                        "description": "Id (URI) of the context source registration to be removed",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -568,7 +644,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content"
+                        "description": "No Content. The context source registration was removed successfully"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -590,6 +666,7 @@
                 "parameters": [
                     {
                         "name": "registrationId",
+                        "description": "Id (URI) of the context source registration to be updated",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -609,13 +686,7 @@
                 ],
                 "responses": {
                     "204": {
-                       "description": "No Content. The context source registration was successfully updated."
-                    },
-                    "207": {
-                        "description": "Multi-Status. Only the attributes included in the response payload were successfully updated",
-                        "schema": {
-                            "$ref": "cim_schema.json#/definitions/EntityAttrList"
-                        }
+                       "description": "No Content. The context source registration was successfully updated"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -634,13 +705,13 @@
         },
         "/subscriptions": {
             "post": {
-                "description": "Creates a new subscription within an NGSI-LD system",
+                "description": "Creates a new Subscription within an NGSI-LD system",
                 "operationId": "createSubscription",
                 "parameters": [
                     {
-                        "in":   "body",
                         "name": "SubscriptionData",
-                        "description": "Payload body in the request contains a JSON-LD object which represents the subscription that is to be created",
+                        "description": "Payload body in the request contains a JSON-LD object which represents the Subscription that is to be created",
+                        "in": "body",
                         "required": true,
                         "schema": {
                             "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionData"
@@ -652,7 +723,15 @@
                 ],
                 "responses": {
                     "201": {
-                      "description": "Created"
+                        "description": "Created",
+                        "headers": {
+                            "Location" : {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "description": "Contains the resource URI of the created Entity resource"
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad Request",
@@ -669,8 +748,8 @@
                 }
             },
             "get": {
-                "description": "Lists subscriptions available in an NGSI-LD system",
-                "operationId": "listSubscriptions",
+                "description": "Retrieves the subscriptions available in an NGSI-LD system",
+                "operationId": "retrieveSubscriptions",
                 "parameters": [
                     {
                         "name": "limit",
@@ -701,11 +780,12 @@
         },
         "/subscriptions/{subscriptionId}": {
             "get": {
-                "description": "Retrieves a specific subscription from an NGSI-LD system",
+                "description": "Retrieves a specific Subscription from an NGSI-LD system",
                 "operationId": "retrieveSubscription",
                 "parameters": [
                     {
                         "name": "subscriptionId",
+                        "description": "Id (URI) of the Subscription to be retrieved",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -736,11 +816,12 @@
                 }
             },
             "delete": {
-                "description": "Removes a specific subscription from an NGSI-LD system",
+                "description": "Removes a specific Subscription from an NGSI-LD system",
                 "operationId": "removeSubscription",
                 "parameters": [
                     {
                         "name": "subscriptionId",
+                        "description": "Id (URI) of the Subscription to be removed",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -748,7 +829,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content. The subscription was deleted successfully"
+                        "description": "No Content. The Subscription was removed successfully"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -765,18 +846,19 @@
                 }
             },
             "patch": {
-                "description": "Updates a specific subscription within an NGSI-LD system",
+                "description": "Updates a specific Subscription within an NGSI-LD system",
                 "operationId": "updateSubscription",
                 "parameters": [
                     {
                         "name": "subscriptionId",
+                        "description": "Id (URI) of the Subscription to be updated",
                         "in": "path",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "subscriptionFragment",
-                        "description": "Subscription Fragment including id, type and any other subscription field to be changed",
+                        "description": "Subscription Fragment including id, type and any other Subscription field to be updated",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -789,13 +871,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content. The subscription was updated successfully"
-                    },
-                    "207": {
-                        "description": "Multi-Status. Only the attributes included in the response payload were successfully updated",
-                        "schema": {
-                            "$ref": "cim_schema.json#/definitions/SubscriptionAttrList"
-                        }
+                        "description": "No Content. The Subscription was updated successfully"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -814,13 +890,13 @@
         },
         "/csourceSubscriptions": {
             "post": {
-                "description": "Creates a context source discovery subscription within an NGSI-LD system",
+                "description": "Creates a context source discovery Subscription within an NGSI-LD system",
                 "operationId": "createCSourceSubscription",
                 "parameters": [
                     {
-                        "in":   "body",
                         "name": "Subscription",
-                        "description": "Payload body in the request contains a JSON-LD object which represents the context source discovery subscription that is to be created",
+                        "description": "Payload body in the request contains a JSON-LD object which represents the context source discovery Subscription that is to be created",
+                        "in":   "body",
                         "required": true,
                         "schema": {
                             "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionData"
@@ -832,7 +908,15 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "Created"
+                        "description": "Created",
+                        "headers": {
+                            "Location" : {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "description": "Contains the resource URI of the created context source discovery Subscription resource"
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad Request",
@@ -849,8 +933,8 @@
                 }
             },
             "get": {
-                "description": "Lists context source discovery subscriptions available in an NGSI-LD system",
-                "operationId": "listCSourceSubscriptions",
+                "description": "Retrieves the context source discovery subscriptions available in an NGSI-LD system",
+                "operationId": "retrieveCSourceSubscriptions",
                 "parameters": [
                     {
                         "name": "limit",
@@ -881,11 +965,12 @@
         },
         "/csourceSubscriptions/{subscriptionId}": {
             "get": {
-                "description": "Retrieves a specific context source subscription from an NGSI-LD system",
+                "description": "Retrieves a specific context source discovery Subscription from an NGSI-LD system",
                 "operationId": "retrieveCSourceSubscription",
                 "parameters": [
                     {
                         "name": "subscriptionId",
+                        "description": "Id (URI) context source discovery Subscription to be retrieved",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -916,11 +1001,12 @@
                 }
             },
             "delete": {
-                "description": "Removes a specific context source subscription from an NGSI-LD system",
+                "description": "Removes a specific context source discovery Subscription from an NGSI-LD system",
                 "operationId": "removeCSourceSubscription",
                 "parameters": [
                     {
                         "name": "subscriptionId",
+                        "description": "Id (URI) context source discovery Subscription to be removed",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -928,7 +1014,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content. The context source subscription was deleted successfully"
+                        "description": "No Content. The context source discovery Subscription was removed successfully"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -945,18 +1031,19 @@
                 }
             },
             "patch": {
-                "description": "Updates a specific context source subscription within an NGSI-LD system",
+                "description": "Updates a specific context source discovery Subscription within an NGSI-LD system",
                 "operationId": "updateCSourceSubscription",
                 "parameters": [
                     {
                         "name": "subscriptionId",
+                        "description": "Id (URI) context source discovery Subscription to be updated",
                         "in": "path",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "subscriptionFragment",
-                        "description": "Subscription Fragment including id, type and any other subscription field to be changed",
+                        "description": "Subscription Fragment including id, type and any other Subscription field to be updated",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -969,13 +1056,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content. The context source subscription was updated successfully"
-                    },
-                    "207": {
-                        "description": "Multi-Status. Only the attributes included in the response payload were successfully updated",
-                        "schema": {
-                            "$ref": "cim_schema.json#/definitions/SubscriptionAttrList"
-                        }
+                        "description": "No Content. The context source discovery Subscription was updated successfully"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -992,19 +1073,5 @@
                 }
             }
         }
-    },
-    "schemes": [
-        "http"
-    ],
-    "swagger": "2.0",
-    "tags": [
-        {
-            "description": "ETSI ISG CIM API",
-            "externalDocs": {
-                "description": "Find out more",
-                "url": "http://portal.etsi.org/"
-            },
-            "name": "etsi cim"
-        }
-    ]
+    }
 }

@@ -709,12 +709,12 @@
                 "operationId": "createSubscription",
                 "parameters": [
                     {
-                        "name": "SubscriptionData",
+                        "name": "SubscriptionDescription",
                         "description": "Payload body in the request contains a JSON-LD object which represents the Subscription that is to be created",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/SubscriptionData"
+                            "$ref": "ngsild_subscriptions_schema.json#/definitions/SubscriptionDescription"
                         }
                     }
                 ],
@@ -766,7 +766,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/SubscriptionDescriptionList"
+                            "$ref": "ngsild_subscriptions_schema.json#/definitions/SubscriptionList"
                         }
                     },
                     "400": {
@@ -798,7 +798,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/SubscriptionDescription"
+                            "$ref": "ngsild_subscriptions_schema.json#/definitions/Subscription"
                         }
                     },
                     "400": {
@@ -857,12 +857,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "subscriptionFragment",
+                        "name": "SubscriptionFragment",
                         "description": "Subscription Fragment including id, type and any other Subscription field to be updated",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/SubscriptionData"
+                            "$ref": "ngsild_subscriptions_schema.json#/definitions/SubscriptionFragment"
                         }
                     }
                 ],
@@ -894,12 +894,12 @@
                 "operationId": "createCSourceSubscription",
                 "parameters": [
                     {
-                        "name": "Subscription",
+                        "name": "SubscriptionDescription",
                         "description": "Payload body in the request contains a JSON-LD object which represents the context source discovery Subscription that is to be created",
                         "in":   "body",
                         "required": true,
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/SubscriptionData"
+                            "$ref": "ngsild_subscriptions_schema.json#/definitions/SubscriptionDescription"
                         }
                     }
                 ],
@@ -951,7 +951,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "ngsild_schema_subscriptions.json#/definitions/SubscriptionDescriptionList"
+                            "$ref": "ngsild_subscriptions_schema.json#/definitions/SubscriptionList"
                         }
                     },
                     "400": {
@@ -983,7 +983,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/SubscriptionDescription"
+                            "$ref": "ngsild_subscriptions_schema.json#/definitions/Subscription"
                         }
                     },
                     "400": {
@@ -1042,12 +1042,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "subscriptionFragment",
+                        "name": "SubscriptionFragment",
                         "description": "Subscription Fragment including id, type and any other Subscription field to be updated",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/SubscriptionData"
+                            "$ref": "ngsild_subscriptions_schema.json#/definitions/SubscriptionFragment"
                         }
                     }
                 ],

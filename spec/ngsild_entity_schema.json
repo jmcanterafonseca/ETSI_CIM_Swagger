@@ -1,0 +1,36 @@
+{
+    "definitions": {
+        "Entity": {
+            "type": "object",
+            "required": ["id", "type", "dateCreated", "dateModified"],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "type": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "location": {
+                    "$ref": "#/definitions/CProperty"
+                },
+                "observationSpace": {
+                    "$ref": "#/definitions/CProperty"
+                },
+                "operationSpace": {
+                    "$ref": "#/definitions/CProperty"
+                },
+                "@context": {
+                    "type": ["string","object","array"]
+                },
+                "dateCreated": {
+                    "$ref": "#/definitions/CProperty"
+                },
+                "dateModified": {
+                    "$ref": "#/definitions/CProperty"
+                }
+            }
+        }
+    }
+}

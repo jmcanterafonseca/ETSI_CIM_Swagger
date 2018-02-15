@@ -1,0 +1,72 @@
+{
+    "definitions": {
+        "Subscription": {
+            "type": "object",
+            "required": ["type","entities","q"],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["Subscription"]
+                },
+                "description": {
+                    "type": "string"
+                },
+                "entities": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/definitions/EntityInfo"
+                    }
+                },
+                "watchedAttributes": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "timeInterval": {
+                    "type": "number"
+                },
+                "q": {
+                    "type": "string"
+                },
+                "geoQ": {
+                    "$ref": "#/definitions/GeoQuery"
+                },
+                "notification": {
+                    "$ref": "#/definitions/NotificationParams"
+                },
+                "expires": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": ["active","inactive","failed","expired"]
+                },
+                "throttling": {
+                    "type": "number",
+                    "minimum": 0,
+                    "exclusiveMinimum": true
+                },
+                "@context": {
+                    "type": ["string","object","array"]
+                },
+                "dateCreated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dateModified": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    }
+}

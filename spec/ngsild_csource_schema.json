@@ -1,0 +1,139 @@
+{
+    "definitions": {
+        "CsourceRegistrationParams": {
+            "type": "object",
+            "properties": {
+                "timestamp": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "ngsild_schema.json#/definitions/TimeInterval"
+                    }
+                },
+                "location": {
+                    "$ref": "http://json.schemastore.org/geojson#/definitions/geometry"
+                },
+                "expires": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "CsourceRegistrationMandatoryParams": {
+            "type": "object",
+            "required": [
+                "endpoint",
+                "type",
+                "information"
+            ],
+            "properties": {
+                "endpoint": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "CSourceRegistration"
+                    ]
+                },
+                "information": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "ngsild_schema.json#/definitions/RegistrationInfo"
+                    }
+                }
+            }
+        },
+        "CsourceRegistration": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "required": [
+                        "id"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uri"
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationParams"
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationMandatoryParams"
+                }
+            ]
+        },
+        "CsourceRegistrationDescription": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uri"
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationParams"
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationMandatoryParams"
+                }
+            ]
+        },
+        "CsourceRegistrationFragment": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "required": [
+                        "id"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "endpoint": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "CSourceRegistration"
+                            ]
+                        },
+                        "information": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "$ref": "ngsild_schema.json#/definitions/RegistrationInfo"
+                            }
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationParams"
+                }
+            ]
+        },
+        "CsourceRegistrationList": {
+            "type": "array",
+            "items": {
+                "type": {
+                    "$ref": "#/definitions/CsourceRegistration"
+                }
+            }
+        }
+    }
+}
+

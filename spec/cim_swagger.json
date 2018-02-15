@@ -475,7 +475,7 @@
                         "in":   "body",
                         "required": true,
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/CsourceRegistrationDescription"
+                            "$ref": "ngsild_csource_schema.json#/definitions/CsourceRegistrationDescription"
                         }
                     }
                 ],
@@ -581,7 +581,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/CsourceRegistrationList"
+                            "$ref": "ngsild_csource_schema.json#/definitions/CsourceRegistrationList"
                         }
                     },
                     "400": {
@@ -613,7 +613,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/CsourceRegistration"
+                            "$ref": "ngsild_csource_schema.json#/definitions/CsourceRegistration"
                         }
                     },
                     "400": {
@@ -677,7 +677,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/CsourceRegistrationFragment"
+                            "$ref": "ngsild_csource_schema.json#/definitions/CsourceRegistrationFragment"
                         }
                     }
                 ],

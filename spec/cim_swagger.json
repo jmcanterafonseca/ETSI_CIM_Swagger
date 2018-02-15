@@ -136,13 +136,13 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/EntityList"
+                            "$ref": "ngsild_schema.json#/definitions/EntityList"
                         }
                     },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -157,7 +157,7 @@
                         "in":   "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/EntityData"
+                            "$ref": "ngsild_schema.json#/definitions/EntityData"
                         }
                     }
                 ],
@@ -179,19 +179,19 @@
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "409": {
                         "description": "Already exists",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "422": {
                         "description": "Unprocessable Entity",
                         "schema": {
-                           "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                           "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -223,19 +223,19 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                          "$ref": "cim_schema.json#/definitions/Entity"
+                          "$ref": "ngsild_schema.json#/definitions/Entity"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                           "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                           "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -259,13 +259,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -296,7 +296,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/entityFragment"
+                            "$ref": "ngsild_schema.json#/definitions/entityFragment"
                         }
                     }
                 ],
@@ -310,19 +310,19 @@
                     "207": {
                         "description": "Multi-Status. Only the attributes included in the response payload were successfully appended",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/EntityAttrList"
+                            "$ref": "ngsild_schema.json#/definitions/EntityAttrList"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -344,7 +344,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/entityFragment"
+                            "$ref": "ngsild_schema.json#/definitions/entityFragment"
                         }
                     }
                 ],
@@ -358,19 +358,19 @@
                     "207": {
                         "description": "Multi-Status. Only the attributes included in the response payload were successfully appended",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/EntityAttrList"
+                            "$ref": "ngsild_schema.json#/definitions/EntityAttrList"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -401,7 +401,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                          "$ref": "cim_schema.json#/definitions/entityFragment"
+                          "$ref": "ngsild_schema.json#/definitions/entityFragment"
                         }
                     }
                 ],
@@ -415,13 +415,13 @@
                     "400": {
                       "description": "Bad Request",
                       "schema": {
-                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                       }
                     },
                     "404": {
                       "description": "Not Found",
                       "schema": {
-                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                       }
                     }
                 }
@@ -452,13 +452,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -470,12 +470,12 @@
                 "operationId": "registerCsource",
                 "parameters": [
                     {
-                        "name": "CsourceData",
+                        "name": "CsourceRegistrationDescription",
                         "description": "Payload body in the request contains a JSON-LD object which represents the context source registration that is to be created",
                         "in":   "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/CsourceData"
+                            "$ref": "ngsild_schema.json#/definitions/CsourceRegistrationDescription"
                         }
                     }
                 ],
@@ -497,19 +497,19 @@
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "409": {
                         "description": "Already exists",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "422": {
                         "description": "Unprocessable Context Source Registration",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -581,13 +581,13 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/CsourceDescriptionList"
+                            "$ref": "ngsild_schema.json#/definitions/CsourceRegistrationList"
                         }
                     },
                     "400": {
                         "description": "Bad request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -613,19 +613,19 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/CsourceDescription"
+                            "$ref": "ngsild_schema.json#/definitions/CsourceRegistration"
                         }
                     },
                     "400": {
                       "description": "Bad Request",
                       "schema": {
-                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                       }
                     },
                     "404": {
                       "description": "Not Found",
                       "schema": {
-                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                       }
                     }
                 }
@@ -649,13 +649,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -672,12 +672,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "csourceRegistrationFragment",
+                        "name": "CsourceRegistrationFragment",
                         "description": "Payload body in the request contains a JSON-LD object which represents the context source registration that is to be updated",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/CsourcePatch"
+                            "$ref": "ngsild_schema.json#/definitions/CsourceRegistrationFragment"
                         }
                     }
                 ],
@@ -691,13 +691,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -714,7 +714,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionData"
+                            "$ref": "ngsild_schema.json#/definitions/SubscriptionData"
                         }
                     }
                 ],
@@ -736,13 +736,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "409": {
                         "description": "Already exists",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -766,13 +766,13 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionDescriptionList"
+                            "$ref": "ngsild_schema.json#/definitions/SubscriptionDescriptionList"
                         }
                     },
                     "400": {
                       "description": "Bad Request",
                       "schema": {
-                        "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                        "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                       }
                     }
                 }
@@ -798,19 +798,19 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionDescription"
+                            "$ref": "ngsild_schema.json#/definitions/SubscriptionDescription"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -834,13 +834,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -862,7 +862,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionData"
+                            "$ref": "ngsild_schema.json#/definitions/SubscriptionData"
                         }
                     }
                 ],
@@ -876,13 +876,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -899,7 +899,7 @@
                         "in":   "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionData"
+                            "$ref": "ngsild_schema.json#/definitions/SubscriptionData"
                         }
                     }
                 ],
@@ -921,13 +921,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "409": {
                         "description": "Already exists",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -951,13 +951,13 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionDescriptionList"
+                            "$ref": "ngsild_schema_subscriptions.json#/definitions/SubscriptionDescriptionList"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -983,19 +983,19 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionDescription"
+                            "$ref": "ngsild_schema.json#/definitions/SubscriptionDescription"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -1019,13 +1019,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }
@@ -1047,7 +1047,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "cim_schema_subscriptions.json#/definitions/SubscriptionData"
+                            "$ref": "ngsild_schema.json#/definitions/SubscriptionData"
                         }
                     }
                 ],
@@ -1061,13 +1061,13 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "cim_schema.json#/definitions/ApiErrorResponse"
+                            "$ref": "ngsild_schema.json#/definitions/ApiErrorResponse"
                         }
                     }
                 }

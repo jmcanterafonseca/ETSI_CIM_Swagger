@@ -1,34 +1,120 @@
 {
     "definitions": {
-        "Entity": {
+        "EntityParams": {
             "type": "object",
-            "required": ["id", "type", "dateCreated", "dateModified"],
             "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "type": {
-                    "type": "string",
-                    "minLength": 1
-                },
                 "location": {
-                    "$ref": "#/definitions/CProperty"
+                    "$ref": "ngsild_schema.json#/definitions/CProperty"
                 },
                 "observationSpace": {
-                    "$ref": "#/definitions/CProperty"
+                    "$ref": "ngsild_schema.json#/definitions/CProperty"
                 },
                 "operationSpace": {
-                    "$ref": "#/definitions/CProperty"
+                    "$ref": "ngsild_schema.json#/definitions/CProperty"
                 },
                 "@context": {
                     "type": ["string","object","array"]
+                }
+            }
+        },
+        "EntityMandatoryParams": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "Entity": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "required": ["id", "dateCreated", "dateModified"],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "dateCreated": {
+                            "$ref": "ngsild_schema.json#/definitions/CProperty"
+                        },
+                        "dateModified": {
+                            "$ref": "ngsild_schema.json#/definitions/CProperty"
+                        }
+                    }
                 },
-                "dateCreated": {
-                    "$ref": "#/definitions/CProperty"
+                {
+                    "$ref": "#/definitions/EntityParams"
                 },
-                "dateModified": {
-                    "$ref": "#/definitions/CProperty"
+                {
+                    "$ref": "#/definitions/EntityMandatoryParams"
+                }
+            ]
+        },
+        "EntityDescription": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "required": ["id"],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uri"
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/EntityParams"
+                },
+                {
+                    "$ref": "#/definitions/EntityMandatoryParams"
+                }
+            ]
+        },
+        "EntityFragment": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "required": ["id"],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "type": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/EntityParams"
+                }
+            ]
+        },
+        "EntityAttrList": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/EntityParams"
+                }
+            ]
+        },
+        "EntityList": {
+            "type": "array",
+            "items": {
+                "type": {
+                    "$ref": "#/definitions/Entity"
                 }
             }
         }

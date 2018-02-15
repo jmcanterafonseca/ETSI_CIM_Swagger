@@ -375,33 +375,15 @@
         },
 
 
-        "CsourceRegistration": {
+
+        "CsourceRegistrationParams": {
             "type": "object",
-            "required": ["endpoint","type","information"],
             "properties": {
-                "endpoint": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "information": {
-                    "type": "array",
-                    "minItems": 1,
-                    "items": {
-                      "$ref": "#/definitions/RegistrationInfo"
-                    }
-                },
                 "timestamp": {
                     "type": "array",
                     "minItems": 1,
                     "items": {
-                      "$ref": "#/definitions/TimeInterval"
+                        "$ref": "#/definitions/TimeInterval"
                     }
                 },
                 "location": {
@@ -415,6 +397,120 @@
                     "type": "string"
                 }
             }
-        }
+        },
+
+
+        "CsourceRegistrationMandatoryParams": {
+                "type": "object",
+                "required": ["endpoint", "type", "information"],
+                "properties": {
+                    "endpoint": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": ["CSourceRegistration"]
+                    },
+                    "information": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "$ref": "#/definitions/RegistrationInfo"
+                        }
+                    }
+                }
+            }
+        },
+
+
+        "CsourceRegistration": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "required": ["id"],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uri"
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationParams"
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationMandatoryParams"
+                }
+            ]
+        },
+
+
+        "CsourceRegistrationDescription": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uri"
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationParams"
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationMandatoryParams"
+                }
+            ]
+        },
+
+
+        "CsourceRegistrationFragment": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "required": ["id"],
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "endpoint": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "type": {
+                            "type": "string",
+                            "enum": ["CSourceRegistration"]
+                        },
+                        "information": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "$ref": "#/definitions/RegistrationInfo"
+                            }
+                        }
+                    }
+                },
+                {
+                    "$ref": "#/definitions/CsourceRegistrationParams"
+                }
+            ]
+        },
+
+    
+        "CsourceRegistrationList": {
+            "type": "array",
+            "items": {
+                "type": {
+                    "$ref": "#/definitions/CsourceRegistration"
+                }
+            }
+        },
+
+
+
     }
 }

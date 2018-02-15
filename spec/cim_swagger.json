@@ -136,7 +136,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/EntityList"
+                            "$ref": "ngsild_entity_schema.json#/definitions/EntityList"
                         }
                     },
                     "400": {
@@ -152,12 +152,12 @@
                 "operationId": "createEntity",
                 "parameters": [
                     {
-                        "name": "EntityData",
+                        "name": "EntityDescription",
                         "description": "Payload body in the request contains a JSON-LD object which represents the Entity that is to be created",
                         "in":   "body",
                         "required": true,
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/EntityData"
+                            "$ref": "ngsild_entity_schema.json#/definitions/EntityDescription"
                         }
                     }
                 ],
@@ -223,7 +223,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                          "$ref": "ngsild_schema.json#/definitions/Entity"
+                          "$ref": "ngsild_entity_schema.json#/definitions/Entity"
                         }
                     },
                     "400": {
@@ -291,12 +291,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "entityFragment",
+                        "name": "EntityFragment",
                         "description": "Entity Fragment containing a complete representation of the attributes to be added",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/entityFragment"
+                            "$ref": "ngsild_entity_schema.json#/definitions/EntityFragment"
                         }
                     }
                 ],
@@ -310,7 +310,7 @@
                     "207": {
                         "description": "Multi-Status. Only the attributes included in the response payload were successfully appended",
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/EntityAttrList"
+                            "$ref": "ngsild_entity_schema.json#/definitions/EntityAttrList"
                         }
                     },
                     "400": {
@@ -339,12 +339,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "entityFragment",
+                        "name": "EntityFragment",
                         "description": "Entity Fragment containing a complete representation of the attributes to be updated",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/entityFragment"
+                            "$ref": "ngsild_entity_schema.json#/definitions/EntityFragment"
                         }
                     }
                 ],
@@ -358,7 +358,7 @@
                     "207": {
                         "description": "Multi-Status. Only the attributes included in the response payload were successfully appended",
                         "schema": {
-                            "$ref": "ngsild_schema.json#/definitions/EntityAttrList"
+                            "$ref": "ngsild_entity_schema.json#/definitions/EntityAttrList"
                         }
                     },
                     "400": {
@@ -396,12 +396,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "entityFragment",
+                        "name": "EntityFragment",
                         "description": "Entity Fragment containing the elements of the attribute to be updated",
                         "in": "body",
                         "required": true,
                         "schema": {
-                          "$ref": "ngsild_schema.json#/definitions/entityFragment"
+                          "$ref": "ngsild_entity_schema.json#/definitions/EntityFragment"
                         }
                     }
                 ],

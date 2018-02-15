@@ -113,9 +113,7 @@
         "EntityList": {
             "type": "array",
             "items": {
-                "type": {
-                    "$ref": "#/definitions/Entity"
-                }
+                "$ref": "#/definitions/Entity"
             }
         }
     }

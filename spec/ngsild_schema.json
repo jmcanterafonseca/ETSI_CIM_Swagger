@@ -118,6 +118,22 @@
 
 
         "EntityInfo": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "idPattern": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "EntityInfo_correct_definition_not_compilable_in_swagger_2_0": {
             "anyOf": [
                 {
                     "type": "object",

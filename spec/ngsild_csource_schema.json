@@ -129,9 +129,7 @@
         "CsourceRegistrationList": {
             "type": "array",
             "items": {
-                "type": {
-                    "$ref": "#/definitions/CsourceRegistration"
-                }
+                "$ref": "#/definitions/CsourceRegistration"
             }
         }
     }

@@ -140,9 +140,7 @@
         "SubscriptionList": {
             "type": "array",
             "items": {
-                "type": {
-                    "$ref": "#/definitions/Subscription"
-                }
+                "$ref": "#/definitions/Subscription"
             }
         }
     }

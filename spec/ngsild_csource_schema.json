@@ -109,7 +109,7 @@
                         "type": {
                             "type": "string",
                             "enum": [
-                                "CSourceRegistration"
+                                "ContextSourceRegistration"
                             ]
                         },
                         "information": {

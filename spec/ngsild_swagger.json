@@ -49,6 +49,13 @@
                 "url": "http://openmobilealliance.org/wp-content/uploads/2012/11/Next-Generation-Service-Interfaces.pdf"
             }
         },{
+            "name": "FIWARE NSGI v2",
+            "description": "FIWARE Next Generation Service Interfaces v2",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "https://orioncontextbroker.docs.apiary.io/#"
+            }
+        },{
             "name": "JSON-LD",
             "description": "JSON for Linking Data",
             "externalDocs": {

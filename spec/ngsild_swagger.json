@@ -6,7 +6,7 @@
         "title": "ETSI ISG CIM / NGSI-LD API",
         "termsOfService": "http://tbd.tbd/tbd/",
         "contact": {
-            "email": "tbd@tdb.org"
+            "email": "NGSI-LD@etsi.org"
         },
         "license": {
             "name": "Apache 2.0",

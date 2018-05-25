@@ -32,13 +32,13 @@
         },
         "PropertySystemData": {
             "type": "object",
-            "required": ["createdAt", "dateModified"],
+            "required": ["createdAt", "modifiedAt"],
             "properties": {
                 "createdAt": {
                     "type": "string",
                     "format": "date-time"
                 },
-                "dateModified": {
+                "modifiedAt": {
                     "type": "string",
                     "format": "date-time"
                 }
@@ -81,7 +81,7 @@
                     "type": "string",
                     "format": "date-time"
                 },
-                "dateModified": {
+                "modifiedAt": {
                     "type": "string",
                     "format": "date-time"
                 }

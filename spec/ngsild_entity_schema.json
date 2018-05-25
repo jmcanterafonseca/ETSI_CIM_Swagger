@@ -31,7 +31,7 @@
             "allOf": [
                 {
                     "type": "object",
-                    "required": ["id", "createdAt", "dateModified"],
+                    "required": ["id", "createdAt", "modifiedAt"],
                     "properties": {
                         "id": {
                             "type": "string",
@@ -40,7 +40,7 @@
                         "createdAt": {
                             "$ref": "ngsild_schema.json#/definitions/Property"
                         },
-                        "dateModified": {
+                        "modifiedAt": {
                             "$ref": "ngsild_schema.json#/definitions/Property"
                         }
                     }

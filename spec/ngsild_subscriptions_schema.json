@@ -43,7 +43,7 @@
         },
         "SubscriptionMandatoryParams": {
             "type": "object",
-            "required": ["type","entities","q"],
+            "required": ["type","entities"],
             "properties": {
                 "type": {
                     "type": "string",

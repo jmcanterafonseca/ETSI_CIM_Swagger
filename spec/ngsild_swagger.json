@@ -138,7 +138,8 @@
                     }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -170,7 +171,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "201": {
@@ -225,7 +227,8 @@
                    }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -309,7 +312,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "204": {
@@ -357,7 +361,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "204": {
@@ -414,7 +419,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "204": {
@@ -488,7 +494,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "201": {
@@ -583,7 +590,8 @@
                     }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -615,7 +623,8 @@
                     }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -690,7 +699,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "204": {
@@ -727,7 +737,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "201": {
@@ -768,7 +779,8 @@
                     }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -800,7 +812,8 @@
                     }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -875,7 +888,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "204": {
@@ -912,7 +926,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "201": {
@@ -953,7 +968,8 @@
                     }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -985,7 +1001,8 @@
                     }
                 ],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "200": {
@@ -1060,7 +1077,8 @@
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/ld+json"
                 ],
                 "responses": {
                     "204": {

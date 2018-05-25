@@ -65,7 +65,7 @@
               }
             ]
         },
-        "CRelationshipCommonData": {
+        "RelationshipCommonData": {
             "type": "object",
             "properties": {
                 "timestamp": {
@@ -74,7 +74,7 @@
                 }
             }
         },
-        "CRelationshipSystemData": {
+        "RelationshipSystemData": {
             "type": "object",
             "properties": {
                 "createdAt": {
@@ -87,7 +87,7 @@
                 }
             }
         },
-        "CRelationship": {
+        "Relationship": {
             "allOf": [
                 {
                     "type": "object",
@@ -95,7 +95,7 @@
                     "properties": {
                         "type": {
                             "type": "string",
-                            "enum": ["CRelationship"]
+                            "enum": ["Relationship"]
                         },
                         "object": {
                           "type": "string",
@@ -104,10 +104,10 @@
                     }
                 },
                 {
-                    "$ref": "#/definitions/CRelationshipSystemData"
+                    "$ref": "#/definitions/RelationshipSystemData"
                 },
                 {
-                    "$ref": "#/definitions/CRelationshipCommonData"
+                    "$ref": "#/definitions/RelationshipCommonData"
                 }
             ]
         },

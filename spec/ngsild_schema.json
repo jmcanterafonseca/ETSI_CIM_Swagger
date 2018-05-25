@@ -18,7 +18,7 @@
                 }
             }
         },
-        "CPropertyCommonData": {
+        "PropertyCommonData": {
             "type": "object",
             "properties": {
                 "timestamp": {
@@ -30,7 +30,7 @@
                 }
             }
         },
-        "CPropertySystemData": {
+        "PropertySystemData": {
             "type": "object",
             "required": ["dateCreated", "dateModified"],
             "properties": {
@@ -44,7 +44,7 @@
                 }
             }
         },
-        "CProperty": {
+        "Property": {
             "allOf": [
               {
                   "type": "object",
@@ -52,16 +52,16 @@
                   "properties": {
                       "type": {
                           "type": "string",
-                          "enum": ["CProperty"]
+                          "enum": ["Property"]
                       },
                       "value": {}
                   }
               },
               {
-                "$ref": "#/definitions/CPropertySystemData"
+                "$ref": "#/definitions/PropertySystemData"
               },
               {
-                "$ref": "#/definitions/CPropertyCommonData"
+                "$ref": "#/definitions/PropertyCommonData"
               }
             ]
         },

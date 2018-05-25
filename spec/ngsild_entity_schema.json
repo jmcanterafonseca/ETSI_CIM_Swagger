@@ -4,13 +4,13 @@
             "type": "object",
             "properties": {
                 "location": {
-                    "$ref": "ngsild_schema.json#/definitions/CProperty"
+                    "$ref": "ngsild_schema.json#/definitions/Property"
                 },
                 "observationSpace": {
-                    "$ref": "ngsild_schema.json#/definitions/CProperty"
+                    "$ref": "ngsild_schema.json#/definitions/Property"
                 },
                 "operationSpace": {
-                    "$ref": "ngsild_schema.json#/definitions/CProperty"
+                    "$ref": "ngsild_schema.json#/definitions/Property"
                 },
                 "@context": {
                     "type": ["string","object","array"]
@@ -38,10 +38,10 @@
                             "format": "uri"
                         },
                         "dateCreated": {
-                            "$ref": "ngsild_schema.json#/definitions/CProperty"
+                            "$ref": "ngsild_schema.json#/definitions/Property"
                         },
                         "dateModified": {
-                            "$ref": "ngsild_schema.json#/definitions/CProperty"
+                            "$ref": "ngsild_schema.json#/definitions/Property"
                         }
                     }
                 },

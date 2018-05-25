@@ -72,7 +72,8 @@
         }
     ],
     "schemes": [
-        "http"
+        "http",
+        "https"
     ],
     "paths": {
         "/entities": {

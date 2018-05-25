@@ -31,13 +31,13 @@
             "allOf": [
                 {
                     "type": "object",
-                    "required": ["id", "dateCreated", "dateModified"],
+                    "required": ["id", "createdAt", "dateModified"],
                     "properties": {
                         "id": {
                             "type": "string",
                             "format": "uri"
                         },
-                        "dateCreated": {
+                        "createdAt": {
                             "$ref": "ngsild_schema.json#/definitions/Property"
                         },
                         "dateModified": {

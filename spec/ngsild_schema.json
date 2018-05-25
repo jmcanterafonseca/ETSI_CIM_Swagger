@@ -32,9 +32,9 @@
         },
         "PropertySystemData": {
             "type": "object",
-            "required": ["dateCreated", "dateModified"],
+            "required": ["createdAt", "dateModified"],
             "properties": {
-                "dateCreated": {
+                "createdAt": {
                     "type": "string",
                     "format": "date-time"
                 },
@@ -77,7 +77,7 @@
         "CRelationshipSystemData": {
             "type": "object",
             "properties": {
-                "dateCreated": {
+                "createdAt": {
                     "type": "string",
                     "format": "date-time"
                 },

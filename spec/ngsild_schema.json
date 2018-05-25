@@ -21,7 +21,7 @@
         "PropertyCommonData": {
             "type": "object",
             "properties": {
-                "timestamp": {
+                "observedAt": {
                     "type": "string",
                     "format": "date-time"
                 },
@@ -68,7 +68,7 @@
         "RelationshipCommonData": {
             "type": "object",
             "properties": {
-                "timestamp": {
+                "observedAt": {
                     "type": "string",
                     "format": "date-time"
                 }

@@ -176,14 +176,9 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "Created",
-                        "headers": {
-                            "Location" : {
-                                "schema": {
-                                  "type": "string"
-                                },
-                                "description": "Contains the resource URI of the created Entity"
-                            }
+                        "description": "Created. Contains the resource URI of the created Entity",
+                        "schema": {
+                          "type": "string"
                         }
                     },
                     "400": {
@@ -499,15 +494,10 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "Created",
-                        "headers": {
-                            "Location" : {
-                                "schema": {
-                                    "type": "string"
-                                },
-                                "description": "Contains the resource URI of the created context source registration resource"
-                            }
-                      }
+                        "description": "Created. Contains the resource URI of the created context source registration resource",
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     "400": {
                         "description": "Bad request",
@@ -742,14 +732,9 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "Created",
-                        "headers": {
-                            "Location" : {
-                                "schema": {
-                                    "type": "string"
-                                },
-                                "description": "Contains the resource URI of the created Entity resource"
-                            }
+                        "description": "Created. Contains the resource URI of the created Entity resource",
+                        "schema": {
+                            "type": "string"
                         }
                     },
                     "400": {
@@ -931,14 +916,9 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "Created",
-                        "headers": {
-                            "Location" : {
-                                "schema": {
-                                    "type": "string"
-                                },
-                                "description": "Contains the resource URI of the created context source discovery Subscription resource"
-                            }
+                        "description": "Created. Contains the resource URI of the created context source discovery Subscription resource",
+                        "schema": {
+                            "type": "string"
                         }
                     },
                     "400": {

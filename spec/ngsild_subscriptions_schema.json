@@ -42,6 +42,9 @@
                             "type": "number",
                             "minimum": 0,
                             "exclusiveMinimum": true
+                        },
+                        "q": {
+                            "type": "string"
                         }
                     }
                 },
@@ -64,9 +67,6 @@
                     "items": {
                         "$ref": "ngsild_schema.json#/definitions/EntityInfo"
                     }
-                },
-                "q": {
-                    "type": "string"
                 }
             }
         },

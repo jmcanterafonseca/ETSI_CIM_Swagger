@@ -197,7 +197,7 @@
                   "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/parameters/2/schema/allOf/1"
                 },
                 {
-                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/3"
+                  "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/parameters/2/schema/allOf/2"
                 }
               ]
             }
@@ -277,32 +277,13 @@
                   }
                 },
                 {
-                  "type": "object",
-                  "properties": {
-                    "createdAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "modifiedAt": {
-                      "type": "string",
-                      "format": "date-time"
-                    }
-                  }
-                },
-                {
                   "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/parameters/2/schema/allOf/1"
                 },
                 {
-                  "type": "object",
-                  "required": [
-                    "type"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "minLength": 1
-                    }
-                  }
+                  "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/parameters/2/schema/allOf/2"
+                },
+                {
+                  "$ref": "#/paths/~1csources~1%7BregistrationId%7D/get/responses/200/schema/allOf/1"
                 }
               ]
             }
@@ -452,12 +433,24 @@
                   }
                 },
                 {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                {
                   "allOf": [
                     {
                       "type": "object",
                       "properties": {
                         "location": {
-                          "$ref": "#/paths/~1entities/post/parameters/0/schema/allOf/1/allOf/0/properties/observationSpace"
+                          "$ref": "#/paths/~1entities/post/parameters/0/schema/allOf/2/allOf/0/properties/observationSpace"
                         },
                         "observationSpace": {
                           "allOf": [
@@ -491,17 +484,23 @@
                           ]
                         },
                         "operationSpace": {
-                          "$ref": "#/paths/~1entities/post/parameters/0/schema/allOf/1/allOf/0/properties/observationSpace"
+                          "$ref": "#/paths/~1entities/post/parameters/0/schema/allOf/2/allOf/0/properties/observationSpace"
                         }
                       }
                     },
                     {
-                      "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/1/allOf/1"
+                      "type": "object",
+                      "properties": {
+                        "@context": {
+                          "type": [
+                            "string",
+                            "object",
+                            "array"
+                          ]
+                        }
+                      }
                     }
                   ]
-                },
-                {
-                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/3"
                 }
               ]
             }
@@ -523,7 +522,7 @@
                   "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/parameters/2/schema/allOf/1"
                 },
                 {
-                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/3"
+                  "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/parameters/2/schema/allOf/2"
                 }
               ]
             }
@@ -844,7 +843,17 @@
                   }
                 },
                 {
-                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/1"
+                  "type": "object",
+                  "properties": {
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
                 },
                 {
                   "$ref": "#/paths/~1csources~1%7BregistrationId%7D/patch/parameters/1/schema/allOf/1"
@@ -1031,7 +1040,7 @@
                       }
                     },
                     {
-                      "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/1/allOf/1"
+                      "$ref": "#/paths/~1entities/post/parameters/0/schema/allOf/2/allOf/1"
                     }
                   ]
                 }
@@ -1070,277 +1079,6 @@
           {
             "name": "SubscriptionDescription",
             "description": "Payload body in the request contains a JSON-LD object which represents the Subscription that is to be created",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/paths/~1csourceSubscriptions/post/parameters/0/schema"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "application/ld+json"
-        ],
-        "responses": {
-          "201": {
-            "description": "Created. Contains the resource URI of the created Entity resource",
-            "schema": {
-              "type": "string"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
-            }
-          },
-          "409": {
-            "description": "Already exists",
-            "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
-            }
-          }
-        }
-      },
-      "get": {
-        "description": "Retrieves the subscriptions available in an NGSI-LD system",
-        "operationId": "retrieveSubscriptions",
-        "parameters": [
-          {
-            "name": "limit",
-            "description": "Maximum number of subscriptions to be retrieved",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "produces": [
-          "application/json",
-          "application/ld+json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/get/responses/200/schema"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
-            }
-          }
-        }
-      }
-    },
-    "/subscriptions/{subscriptionId}": {
-      "get": {
-        "description": "Retrieves a specific Subscription from an NGSI-LD system",
-        "operationId": "retrieveSubscription",
-        "parameters": [
-          {
-            "name": "subscriptionId",
-            "description": "Id (URI) of the Subscription to be retrieved",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "produces": [
-          "application/json",
-          "application/ld+json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "allOf": [
-                {
-                  "type": "object",
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "format": "uri"
-                    }
-                  }
-                },
-                {
-                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/1"
-                },
-                {
-                  "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/1"
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "entities"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "enum": [
-                        "Subscription"
-                      ]
-                    },
-                    "entities": {
-                      "type": "array",
-                      "minItems": 1,
-                      "items": {
-                        "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/patch/parameters/1/schema/allOf/0/properties/entities/items"
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
-            }
-          }
-        }
-      },
-      "delete": {
-        "description": "Removes a specific Subscription from an NGSI-LD system",
-        "operationId": "removeSubscription",
-        "parameters": [
-          {
-            "name": "subscriptionId",
-            "description": "Id (URI) of the Subscription to be removed",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The Subscription was removed successfully"
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
-            }
-          }
-        }
-      },
-      "patch": {
-        "description": "Updates a specific Subscription within an NGSI-LD system",
-        "operationId": "updateSubscription",
-        "parameters": [
-          {
-            "name": "subscriptionId",
-            "description": "Id (URI) of the Subscription to be updated",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "SubscriptionFragment",
-            "description": "Subscription Fragment including id, type and any other Subscription field to be updated",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "allOf": [
-                {
-                  "type": "object",
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "format": "uri"
-                    },
-                    "type": {
-                      "type": "string",
-                      "enum": [
-                        "Subscription"
-                      ]
-                    },
-                    "entities": {
-                      "type": "array",
-                      "minItems": 1,
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "id"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "idPattern": {
-                            "type": "string"
-                          },
-                          "type": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/1"
-                }
-              ]
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "application/ld+json"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The Subscription was updated successfully"
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
-            }
-          }
-        }
-      }
-    },
-    "/csourceSubscriptions": {
-      "post": {
-        "description": "Creates a context source discovery Subscription within an NGSI-LD system",
-        "operationId": "createCSourceSubscription",
-        "parameters": [
-          {
-            "name": "SubscriptionDescription",
-            "description": "Payload body in the request contains a JSON-LD object which represents the context source discovery Subscription that is to be created",
             "in": "body",
             "required": true,
             "schema": {
@@ -1479,16 +1217,7 @@
                       }
                     },
                     {
-                      "type": "object",
-                      "properties": {
-                        "@context": {
-                          "type": [
-                            "string",
-                            "object",
-                            "array"
-                          ]
-                        }
-                      }
+                      "$ref": "#/paths/~1entities/post/parameters/0/schema/allOf/2/allOf/1"
                     }
                   ]
                 },
@@ -1496,6 +1225,234 @@
                   "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/get/responses/200/schema/allOf/3"
                 }
               ]
+            }
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/ld+json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created. Contains the resource URI of the created Entity resource",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
+            }
+          },
+          "409": {
+            "description": "Already exists",
+            "schema": {
+              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "Retrieves the subscriptions available in an NGSI-LD system",
+        "operationId": "retrieveSubscriptions",
+        "parameters": [
+          {
+            "name": "limit",
+            "description": "Maximum number of subscriptions to be retrieved",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/ld+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/get/responses/200/schema"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}": {
+      "get": {
+        "description": "Retrieves a specific Subscription from an NGSI-LD system",
+        "operationId": "retrieveSubscription",
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "description": "Id (URI) of the Subscription to be retrieved",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/ld+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "allOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/paths/~1csources~1%7BregistrationId%7D/get/responses/200/schema/allOf/1"
+                },
+                {
+                  "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/1"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "entities"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "Subscription"
+                      ]
+                    },
+                    "entities": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/patch/parameters/1/schema/allOf/0/properties/entities/items"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Removes a specific Subscription from an NGSI-LD system",
+        "operationId": "removeSubscription",
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "description": "Id (URI) of the Subscription to be removed",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The Subscription was removed successfully"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
+            }
+          }
+        }
+      },
+      "patch": {
+        "description": "Updates a specific Subscription within an NGSI-LD system",
+        "operationId": "updateSubscription",
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "description": "Id (URI) of the Subscription to be updated",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "SubscriptionFragment",
+            "description": "Subscription Fragment including id, type and any other Subscription field to be updated",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/paths/~1csourceSubscriptions~1%7BsubscriptionId%7D/patch/parameters/1/schema"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/ld+json"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The Subscription was updated successfully"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/400/schema"
+            }
+          }
+        }
+      }
+    },
+    "/csourceSubscriptions": {
+      "post": {
+        "description": "Creates a context source discovery Subscription within an NGSI-LD system",
+        "operationId": "createCSourceSubscription",
+        "parameters": [
+          {
+            "name": "SubscriptionDescription",
+            "description": "Payload body in the request contains a JSON-LD object which represents the context source discovery Subscription that is to be created",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/paths/~1subscriptions/post/parameters/0/schema"
             }
           }
         ],
@@ -1641,7 +1598,50 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/patch/parameters/1/schema"
+              "allOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "Subscription"
+                      ]
+                    },
+                    "entities": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "idPattern": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/1"
+                }
+              ]
             }
           }
         ],

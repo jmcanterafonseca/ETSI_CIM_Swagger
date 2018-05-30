@@ -176,14 +176,13 @@
                   },
                   {
                     "type": "object",
+                    "required": [
+                      "type"
+                    ],
                     "properties": {
-                      "createdAt": {
+                      "type": {
                         "type": "string",
-                        "format": "date-time"
-                      },
-                      "modifiedAt": {
-                        "type": "string",
-                        "format": "date-time"
+                        "minLength": 1
                       }
                     }
                   },
@@ -345,13 +344,14 @@
                   },
                   {
                     "type": "object",
-                    "required": [
-                      "type"
-                    ],
                     "properties": {
-                      "type": {
+                      "createdAt": {
                         "type": "string",
-                        "minLength": 1
+                        "format": "date-time"
+                      },
+                      "modifiedAt": {
+                        "type": "string",
+                        "format": "date-time"
                       }
                     }
                   }
@@ -396,6 +396,18 @@
                     "id": {
                       "type": "string",
                       "format": "uri"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
                     }
                   }
                 },
@@ -554,18 +566,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "minLength": 1
-                    }
-                  }
                 }
               ]
             }
@@ -682,14 +682,13 @@
                 },
                 {
                   "type": "object",
+                  "required": [
+                    "type"
+                  ],
                   "properties": {
-                    "createdAt": {
+                    "type": {
                       "type": "string",
-                      "format": "date-time"
-                    },
-                    "modifiedAt": {
-                      "type": "string",
-                      "format": "date-time"
+                      "minLength": 1
                     }
                   }
                 },
@@ -851,13 +850,14 @@
                 },
                 {
                   "type": "object",
-                  "required": [
-                    "type"
-                  ],
                   "properties": {
-                    "type": {
+                    "createdAt": {
                       "type": "string",
-                      "minLength": 1
+                      "format": "date-time"
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "format": "date-time"
                     }
                   }
                 }
@@ -996,6 +996,18 @@
                   }
                 },
                 {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                {
                   "allOf": [
                     {
                       "type": "object",
@@ -1150,18 +1162,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "minLength": 1
-                    }
-                  }
                 }
               ]
             }
@@ -1180,6 +1180,18 @@
             "schema": {
               "allOf": [
                 {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                {
                   "allOf": [
                     {
                       "type": "object",
@@ -1334,18 +1346,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "minLength": 1
-                    }
-                  }
                 }
               ]
             }
@@ -1419,6 +1419,18 @@
                   }
                 },
                 {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                {
                   "allOf": [
                     {
                       "type": "object",
@@ -1573,18 +1585,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "minLength": 1
-                    }
-                  }
                 }
               ]
             }
@@ -1603,6 +1603,18 @@
             "schema": {
               "allOf": [
                 {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                {
                   "allOf": [
                     {
                       "type": "object",
@@ -1757,18 +1769,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "minLength": 1
-                    }
-                  }
                 }
               ]
             }
@@ -1851,6 +1851,18 @@
                   }
                 },
                 {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                {
                   "allOf": [
                     {
                       "type": "object",
@@ -2005,18 +2017,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "minLength": 1
-                    }
-                  }
                 }
               ]
             }

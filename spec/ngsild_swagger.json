@@ -46,7 +46,7 @@
             "description": "Next Generation Service Interfaces",
             "externalDocs": {
                 "description": "Find out more",
-                "url": "http://openmobilealliance.org/wp-content/uploads/2012/11/Next-Generation-Service-Interfaces.pdf"
+                "url": "http://www.openmobilealliance.org/release/NGSI/V1_0-20120529-A/OMA-AD-NGSI-V1_0-20120529-A.pdf"
             }
         },{
             "name": "FIWARE NSGI v2",

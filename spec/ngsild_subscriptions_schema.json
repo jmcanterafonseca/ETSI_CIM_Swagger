@@ -1,5 +1,31 @@
 {
     "definitions": {
+        "SubscriptionParamsExclusion_correct_definition_for_SubscriptionParams_not_compilable_in_swagger_2_0": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "watchedAttributes": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "type": "string"
+                            },
+                            "uniqueItems": true
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "timeInterval": {
+                            "type": "number",
+                            "minimum": 0
+                        }
+                    }
+                }
+            ]
+        },
         "SubscriptionParams": {
             "allOf": [
                 {

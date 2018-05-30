@@ -6,13 +6,13 @@
                     "type": "object",
                     "properties": {
                         "location": {
-                            "$ref": "ngsild_schema.json#/definitions/Property"
+                            "$ref": "ngsild_schema.json#/definitions/GeoProperty"
                         },
                         "observationSpace": {
-                            "$ref": "ngsild_schema.json#/definitions/Property"
+                            "$ref": "ngsild_schema.json#/definitions/GeoProperty"
                         },
                         "operationSpace": {
-                            "$ref": "ngsild_schema.json#/definitions/Property"
+                            "$ref": "ngsild_schema.json#/definitions/GeoProperty"
                         }
                     }
                 },

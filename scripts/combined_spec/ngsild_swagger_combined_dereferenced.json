@@ -3226,7 +3226,7 @@
                             },
                             "timesSent": {
                               "type": "number",
-                              "minimum": 0
+                              "minimum": 1
                             },
                             "lastNotification": {
                               "type": "string",
@@ -3501,7 +3501,7 @@
                               },
                               "timesSent": {
                                 "type": "number",
-                                "minimum": 0
+                                "minimum": 1
                               },
                               "lastNotification": {
                                 "type": "string",
@@ -3747,7 +3747,7 @@
                             },
                             "timesSent": {
                               "type": "number",
-                              "minimum": 0
+                              "minimum": 1
                             },
                             "lastNotification": {
                               "type": "string",
@@ -4073,7 +4073,7 @@
                             },
                             "timesSent": {
                               "type": "number",
-                              "minimum": 0
+                              "minimum": 1
                             },
                             "lastNotification": {
                               "type": "string",
@@ -4283,7 +4283,7 @@
                             },
                             "timesSent": {
                               "type": "number",
-                              "minimum": 0
+                              "minimum": 1
                             },
                             "lastNotification": {
                               "type": "string",
@@ -4558,7 +4558,7 @@
                               },
                               "timesSent": {
                                 "type": "number",
-                                "minimum": 0
+                                "minimum": 1
                               },
                               "lastNotification": {
                                 "type": "string",
@@ -4804,7 +4804,7 @@
                             },
                             "timesSent": {
                               "type": "number",
-                              "minimum": 0
+                              "minimum": 1
                             },
                             "lastNotification": {
                               "type": "string",
@@ -5130,7 +5130,7 @@
                             },
                             "timesSent": {
                               "type": "number",
-                              "minimum": 0
+                              "minimum": 1
                             },
                             "lastNotification": {
                               "type": "string",

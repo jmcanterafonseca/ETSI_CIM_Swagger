@@ -31,6 +31,14 @@
                 }
             }
         },
+        "AtContext": {
+            "type": "object",
+            "properties": {
+                "@context": {
+                    "type": ["string","object","array"]
+                }
+            }
+        },
         "PropertyCommonData": {
             "type": "object",
             "properties": {

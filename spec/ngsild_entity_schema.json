@@ -1,21 +1,25 @@
 {
     "definitions": {
         "EntityParams": {
-            "type": "object",
-            "properties": {
-                "location": {
-                    "$ref": "ngsild_schema.json#/definitions/Property"
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "location": {
+                            "$ref": "ngsild_schema.json#/definitions/Property"
+                        },
+                        "observationSpace": {
+                            "$ref": "ngsild_schema.json#/definitions/Property"
+                        },
+                        "operationSpace": {
+                            "$ref": "ngsild_schema.json#/definitions/Property"
+                        }
+                    }
                 },
-                "observationSpace": {
-                    "$ref": "ngsild_schema.json#/definitions/Property"
-                },
-                "operationSpace": {
-                    "$ref": "ngsild_schema.json#/definitions/Property"
-                },
-                "@context": {
-                    "type": ["string","object","array"]
+                {
+                    "$ref": "ngsild_schema.json#/definitions/AtContext"
                 }
-            }
+            ]
         },
         "EntityMandatoryParams": {
             "type": "object",

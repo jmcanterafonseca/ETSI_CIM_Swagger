@@ -1,29 +1,36 @@
 {
     "definitions": {
         "CsourceRegistrationParams": {
-            "type": "object",
-            "properties": {
-                "timestamp": {
-                    "type": "array",
-                    "minItems": 1,
-                    "items": {
-                        "$ref": "ngsild_schema.json#/definitions/TimeInterval"
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "timestamp": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "$ref": "ngsild_schema.json#/definitions/TimeInterval"
+                            }
+                        },
+                        "location": {
+                            "$ref": "http://json.schemastore.org/geojson#/definitions/geometry"
+                        },
+                        "expires": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        }
                     }
                 },
-                "location": {
-                    "$ref": "http://json.schemastore.org/geojson#/definitions/geometry"
-                },
-                "expires": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
+                {
+                    "$ref": "ngsild_schema.json#/definitions/AtContext"
                 }
-            }
+            ]
         },
         "CsourceRegistrationMandatoryParams": {
             "type": "object",

@@ -20,6 +20,7 @@
         "EntityMandatoryParams": {
             "type": "object",
             "required": ["type"],
+
             "properties": {
                 "type": {
                     "type": "string",
@@ -31,19 +32,16 @@
             "allOf": [
                 {
                     "type": "object",
-                    "required": ["id", "createdAt", "modifiedAt"],
+                    "required": ["id"],
                     "properties": {
                         "id": {
                             "type": "string",
                             "format": "uri"
-                        },
-                        "createdAt": {
-                            "$ref": "ngsild_schema.json#/definitions/Property"
-                        },
-                        "modifiedAt": {
-                            "$ref": "ngsild_schema.json#/definitions/Property"
                         }
                     }
+                },
+                {
+                    "$ref": "ngsild_schema.json#/definitions/CommonMembers"
                 },
                 {
                     "$ref": "#/definitions/EntityParams"

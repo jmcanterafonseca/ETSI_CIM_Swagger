@@ -18,6 +18,19 @@
                 }
             }
         },
+        "CommonMembers": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "modifiedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
         "PropertyCommonData": {
             "type": "object",
             "properties": {
@@ -27,20 +40,6 @@
                 },
                 "unitCode": {
                     "type": "string"
-                }
-            }
-        },
-        "PropertySystemData": {
-            "type": "object",
-            "required": ["createdAt", "modifiedAt"],
-            "properties": {
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "modifiedAt": {
-                    "type": "string",
-                    "format": "date-time"
                 }
             }
         },
@@ -58,7 +57,7 @@
                   }
               },
               {
-                "$ref": "#/definitions/PropertySystemData"
+                "$ref": "#/definitions/CommonMembers"
               },
               {
                 "$ref": "#/definitions/PropertyCommonData"
@@ -69,19 +68,6 @@
             "type": "object",
             "properties": {
                 "observedAt": {
-                    "type": "string",
-                    "format": "date-time"
-                }
-            }
-        },
-        "RelationshipSystemData": {
-            "type": "object",
-            "properties": {
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "modifiedAt": {
                     "type": "string",
                     "format": "date-time"
                 }
@@ -104,7 +90,7 @@
                     }
                 },
                 {
-                    "$ref": "#/definitions/RelationshipSystemData"
+                    "$ref": "#/definitions/CommonMembers"
                 },
                 {
                     "$ref": "#/definitions/RelationshipCommonData"

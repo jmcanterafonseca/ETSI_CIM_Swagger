@@ -67,6 +67,9 @@
                     }
                 },
                 {
+                    "$ref": "ngsild_schema.json#/definitions/CommonMembers"
+                },
+                {
                     "$ref": "#/definitions/CsourceRegistrationParams"
                 },
                 {

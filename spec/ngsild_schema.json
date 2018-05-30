@@ -10,9 +10,6 @@
                 "title": {
                     "type": "string"
                 },
-                "status": {
-                    "type": "string"
-                },
                 "detail": {
                     "type": "string"
                 }

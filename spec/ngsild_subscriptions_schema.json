@@ -76,7 +76,8 @@
                             "exclusiveMinimum": true
                         },
                         "q": {
-                            "type": "string"
+                            "type": "string",
+                            "minLength": 1
                         }
                     }
                 },

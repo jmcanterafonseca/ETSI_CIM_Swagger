@@ -72,8 +72,7 @@
                         },
                         "throttling": {
                             "type": "number",
-                            "minimum": 0,
-                            "exclusiveMinimum": true
+                            "minimum": 1
                         },
                         "q": {
                             "type": "string",

@@ -63,11 +63,11 @@
                 "url": "https://json-ld.org/"
             }
         },{
-            "name": "NGSI-LD",
+            "name": "NGSI-LD API",
             "description": "API defined by the ETSI ISG CIM",
             "externalDocs": {
                 "description": "Find out more",
-                "url": "http://tbd.tbd/tbd/"
+                "url": "http://www.etsi.org/deliver/etsi_gs/CIM/001_099/004/01.01.01_60/gs_CIM004v010101p.pdf"
             }
         }
     ],

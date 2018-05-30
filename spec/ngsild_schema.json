@@ -106,26 +106,26 @@
             ]
         },
         "GeoProperty": {
-          "allOf" : [
-              {
-                  "type": "object",
-                  "required": ["type", "value"],
-                  "properties": {
-                      "type": {
-                          "type": "string",
-                          "enum": [
-                              "GeoProperty"
-                          ]
-                    },
-                    "value": {
-                        "type": "object"
+            "allOf" : [
+                {
+                    "type": "object",
+                    "required": ["type", "value"],
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "GeoProperty"
+                            ]
+                      },
+                      "value": {
+                          "$ref": "http://json.schemastore.org/geojson#/definitions/geometry"
+                      }
                     }
-                  }
-              },
-              {
-                "$ref": "#/definitions/observedMember"
-              }
-            ]
+                },
+                {
+                  "$ref": "#/definitions/observedMember"
+                }
+              ]
         },
         "EntityInfo": {
             "type": "object",

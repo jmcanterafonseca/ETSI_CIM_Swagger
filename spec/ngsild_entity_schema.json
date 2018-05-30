@@ -44,13 +44,13 @@
                     }
                 },
                 {
-                    "$ref": "ngsild_schema.json#/definitions/CommonMembers"
+                    "$ref": "#/definitions/EntityMandatoryParams"
                 },
                 {
                     "$ref": "#/definitions/EntityParams"
                 },
                 {
-                    "$ref": "#/definitions/EntityMandatoryParams"
+                    "$ref": "ngsild_schema.json#/definitions/CommonMembers"
                 }
             ]
         },
@@ -66,10 +66,10 @@
                     }
                 },
                 {
-                    "$ref": "#/definitions/EntityParams"
+                    "$ref": "#/definitions/EntityMandatoryParams"
                 },
                 {
-                    "$ref": "#/definitions/EntityMandatoryParams"
+                    "$ref": "#/definitions/EntityParams"
                 }
             ]
         },
@@ -86,20 +86,20 @@
                     }
                 },
                 {
-                    "$ref": "#/definitions/EntityParams"
+                    "$ref": "#/definitions/EntityMandatoryParams"
                 },
                 {
-                    "$ref": "#/definitions/EntityMandatoryParams"
+                    "$ref": "#/definitions/EntityParams"
                 }
             ]
         },
         "EntityAttrList": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/EntityParams"
+                    "$ref": "#/definitions/EntityMandatoryParams"
                 },
                 {
-                    "$ref": "#/definitions/EntityMandatoryParams"
+                    "$ref": "#/definitions/EntityParams"
                 }
             ]
         },

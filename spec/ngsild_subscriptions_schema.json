@@ -22,7 +22,8 @@
                             "uniqueItems": true
                         },
                         "timeInterval": {
-                            "type": "number"
+                            "type": "number",
+                            "minimum": 0
                         },
                         "geoQ": {
                             "$ref": "ngsild_schema.json#/definitions/GeoQuery"

@@ -49,7 +49,7 @@
       "description": "Next Generation Service Interfaces",
       "externalDocs": {
         "description": "Find out more",
-        "url": "http://openmobilealliance.org/wp-content/uploads/2012/11/Next-Generation-Service-Interfaces.pdf"
+        "url": "http://www.openmobilealliance.org/release/NGSI/V1_0-20120529-A/OMA-AD-NGSI-V1_0-20120529-A.pdf"
       }
     },
     {
@@ -69,11 +69,11 @@
       }
     },
     {
-      "name": "NGSI-LD",
+      "name": "NGSI-LD API",
       "description": "API defined by the ETSI ISG CIM",
       "externalDocs": {
         "description": "Find out more",
-        "url": "http://tbd.tbd/tbd/"
+        "url": "http://www.etsi.org/deliver/etsi_gs/CIM/001_099/004/01.01.01_60/gs_CIM004v010101p.pdf"
       }
     }
   ],
@@ -186,9 +186,6 @@
               "allOf": [
                 {
                   "type": "object",
-                  "required": [
-                    "id"
-                  ],
                   "properties": {
                     "id": {
                       "type": "string",
@@ -200,7 +197,7 @@
                   "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/parameters/2/schema/allOf/1"
                 },
                 {
-                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/2"
+                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/3"
                 }
               ]
             }
@@ -270,66 +267,25 @@
                 {
                   "type": "object",
                   "required": [
-                    "id",
-                    "createdAt",
-                    "modifiedAt"
+                    "id"
                   ],
                   "properties": {
                     "id": {
                       "type": "string",
                       "format": "uri"
-                    },
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
                     "createdAt": {
-                      "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/0/properties/modifiedAt"
+                      "type": "string",
+                      "format": "date-time"
                     },
                     "modifiedAt": {
-                      "allOf": [
-                        {
-                          "type": "object",
-                          "required": [
-                            "type",
-                            "value"
-                          ],
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "Property"
-                              ]
-                            },
-                            "value": {}
-                          }
-                        },
-                        {
-                          "type": "object",
-                          "required": [
-                            "createdAt",
-                            "modifiedAt"
-                          ],
-                          "properties": {
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "modifiedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            }
-                          }
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "observedAt": {
-                              "type": "string",
-                              "format": "date-time"
-                            },
-                            "unitCode": {
-                              "type": "string"
-                            }
-                          }
-                        }
-                      ]
+                      "type": "string",
+                      "format": "date-time"
                     }
                   }
                 },
@@ -361,9 +317,6 @@
                   "format": "uri"
                 },
                 "title": {
-                  "type": "string"
-                },
-                "status": {
                   "type": "string"
                 },
                 "detail": {
@@ -451,20 +404,7 @@
           "207": {
             "description": "Multi-Status. Only the attributes included in the response payload were successfully appended",
             "schema": {
-              "allOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "minLength": 1
-                    }
-                  }
-                },
-                {
-                  "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/parameters/2/schema/allOf/1"
-                }
-              ]
+              "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/patch/responses/207/schema"
             }
           },
           "400": {
@@ -508,33 +448,60 @@
                     "id": {
                       "type": "string",
                       "format": "uri"
-                    },
-                    "type": {
-                      "type": "string",
-                      "minLength": 1
                     }
                   }
                 },
                 {
-                  "type": "object",
-                  "properties": {
-                    "location": {
-                      "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/0/properties/modifiedAt"
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "location": {
+                          "$ref": "#/paths/~1entities/post/parameters/0/schema/allOf/1/allOf/0/properties/observationSpace"
+                        },
+                        "observationSpace": {
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "required": [
+                                "type",
+                                "value"
+                              ],
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "GeoProperty"
+                                  ]
+                                },
+                                "value": {
+                                  "$ref": "#/paths/~1csources/post/parameters/0/schema/allOf/1/allOf/0/properties/location"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "observedAt": {
+                                  "type": "string",
+                                  "format": "date-time"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "operationSpace": {
+                          "$ref": "#/paths/~1entities/post/parameters/0/schema/allOf/1/allOf/0/properties/observationSpace"
+                        }
+                      }
                     },
-                    "observationSpace": {
-                      "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/0/properties/modifiedAt"
-                    },
-                    "operationSpace": {
-                      "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/0/properties/modifiedAt"
-                    },
-                    "@context": {
-                      "type": [
-                        "string",
-                        "object",
-                        "array"
-                      ]
+                    {
+                      "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/1/allOf/1"
                     }
-                  }
+                  ]
+                },
+                {
+                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/3"
                 }
               ]
             }
@@ -551,7 +518,14 @@
           "207": {
             "description": "Multi-Status. Only the attributes included in the response payload were successfully appended",
             "schema": {
-              "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/responses/207/schema"
+              "allOf": [
+                {
+                  "$ref": "#/paths/~1entities~1%7BentityId%7D~1attrs/post/parameters/2/schema/allOf/1"
+                },
+                {
+                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/3"
+                }
+              ]
             }
           },
           "400": {
@@ -870,6 +844,9 @@
                   }
                 },
                 {
+                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/1"
+                },
+                {
                   "$ref": "#/paths/~1csources~1%7BregistrationId%7D/patch/parameters/1/schema/allOf/1"
                 },
                 {
@@ -998,56 +975,65 @@
                   }
                 },
                 {
-                  "type": "object",
-                  "properties": {
-                    "timestamp": {
-                      "type": "array",
-                      "minItems": 1,
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "start"
-                        ],
-                        "properties": {
-                          "start": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "end": {
-                            "type": "string",
-                            "format": "date-time"
-                          }
-                        }
-                      }
-                    },
-                    "location": {
-                      "title": "Geometry",
-                      "description": "A geometry is a GeoJSON object where the type member's value is one of the following strings: `Point`, `MultiPoint`, `LineString`, `MultiLineString`, `Polygon`, `MultiPolygon`, or `GeometryCollection`.",
+                  "allOf": [
+                    {
+                      "type": "object",
                       "properties": {
-                        "type": {
-                          "enum": [
-                            "Point",
-                            "MultiPoint",
-                            "LineString",
-                            "MultiLineString",
-                            "Polygon",
-                            "MultiPolygon",
-                            "GeometryCollection"
-                          ]
+                        "timestamp": {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "start"
+                            ],
+                            "properties": {
+                              "start": {
+                                "type": "string",
+                                "format": "date-time"
+                              },
+                              "end": {
+                                "type": "string",
+                                "format": "date-time"
+                              }
+                            }
+                          }
+                        },
+                        "location": {
+                          "title": "Geometry",
+                          "description": "A geometry is a GeoJSON object where the type member's value is one of the following strings: `Point`, `MultiPoint`, `LineString`, `MultiLineString`, `Polygon`, `MultiPolygon`, or `GeometryCollection`.",
+                          "properties": {
+                            "type": {
+                              "enum": [
+                                "Point",
+                                "MultiPoint",
+                                "LineString",
+                                "MultiLineString",
+                                "Polygon",
+                                "MultiPolygon",
+                                "GeometryCollection"
+                              ]
+                            }
+                          }
+                        },
+                        "expires": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
                         }
                       }
                     },
-                    "expires": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "description": {
-                      "type": "string"
+                    {
+                      "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/1/allOf/1"
                     }
-                  }
+                  ]
                 }
               ]
             }
@@ -1087,162 +1073,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "allOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "format": "uri"
-                    }
-                  }
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "description": {
-                      "type": "string"
-                    },
-                    "watchedAttributes": {
-                      "type": "array",
-                      "minItems": 1,
-                      "items": {
-                        "type": "string"
-                      },
-                      "uniqueItems": true
-                    },
-                    "timeInterval": {
-                      "type": "number"
-                    },
-                    "geoQ": {
-                      "type": "object",
-                      "required": [
-                        "geometry",
-                        "coordinates",
-                        "georel"
-                      ],
-                      "properties": {
-                        "geometry": {
-                          "type": "string"
-                        },
-                        "coordinates": {
-                          "type": "array",
-                          "minItems": 1,
-                          "items": {
-                            "type": "number"
-                          }
-                        },
-                        "georel": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "notification": {
-                      "type": "object",
-                      "required": [
-                        "endpoint"
-                      ],
-                      "properties": {
-                        "attributes": {
-                          "type": "array",
-                          "minItems": 1,
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "format": {
-                          "type": "string"
-                        },
-                        "endpoint": {
-                          "type": "object",
-                          "required": [
-                            "uri"
-                          ],
-                          "properties": {
-                            "uri": {
-                              "type": "string",
-                              "format": "uri"
-                            },
-                            "accept": {
-                              "type": "string",
-                              "enum": [
-                                "application/json",
-                                "application/ld+json"
-                              ]
-                            }
-                          }
-                        },
-                        "timesSent": {
-                          "type": "number",
-                          "minimum": 0
-                        },
-                        "lastNotification": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "lastFailure": {
-                          "type": "string",
-                          "format": "date-time"
-                        },
-                        "lastSuccess": {
-                          "type": "string",
-                          "format": "date-time"
-                        }
-                      }
-                    },
-                    "expires": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "status": {
-                      "type": "string",
-                      "enum": [
-                        "active",
-                        "inactive",
-                        "failed",
-                        "expired"
-                      ]
-                    },
-                    "throttling": {
-                      "type": "number",
-                      "minimum": 0,
-                      "exclusiveMinimum": true
-                    },
-                    "@context": {
-                      "type": [
-                        "string",
-                        "object",
-                        "array"
-                      ]
-                    }
-                  }
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "entities"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "enum": [
-                        "Subscription"
-                      ]
-                    },
-                    "entities": {
-                      "type": "array",
-                      "minItems": 1,
-                      "items": {
-                        "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/patch/parameters/1/schema/allOf/0/properties/entities/items"
-                      }
-                    },
-                    "q": {
-                      "type": "string"
-                    }
-                  }
-                }
-              ]
+              "$ref": "#/paths/~1csourceSubscriptions/post/parameters/0/schema"
             }
           }
         ],
@@ -1291,7 +1122,10 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/paths/~1csourceSubscriptions/get/responses/200/schema"
+              "type": "array",
+              "items": {
+                "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/get/responses/200/schema"
+              }
             }
           },
           "400": {
@@ -1338,10 +1172,32 @@
                   }
                 },
                 {
+                  "$ref": "#/paths/~1entities~1%7BentityId%7D/get/responses/200/schema/allOf/1"
+                },
+                {
                   "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/1"
                 },
                 {
-                  "$ref": "#/paths/~1subscriptions/post/parameters/0/schema/allOf/2"
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "entities"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "Subscription"
+                      ]
+                    },
+                    "entities": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/patch/parameters/1/schema/allOf/0/properties/entities/items"
+                      }
+                    }
+                  }
                 }
               ]
             }
@@ -1444,9 +1300,6 @@
                           }
                         }
                       }
-                    },
-                    "q": {
-                      "type": "string"
                     }
                   }
                 },
@@ -1491,7 +1344,158 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/paths/~1subscriptions/post/parameters/0/schema"
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                },
+                {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "watchedAttributes": {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "string"
+                          },
+                          "uniqueItems": true
+                        },
+                        "timeInterval": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "geoQ": {
+                          "type": "object",
+                          "required": [
+                            "geometry",
+                            "coordinates",
+                            "georel"
+                          ],
+                          "properties": {
+                            "geometry": {
+                              "type": "string"
+                            },
+                            "coordinates": {
+                              "type": "array",
+                              "minItems": 1,
+                              "items": {
+                                "type": "number"
+                              }
+                            },
+                            "georel": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "notification": {
+                          "type": "object",
+                          "required": [
+                            "endpoint"
+                          ],
+                          "properties": {
+                            "attributes": {
+                              "type": "array",
+                              "minItems": 1,
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "format": {
+                              "type": "string"
+                            },
+                            "endpoint": {
+                              "type": "object",
+                              "required": [
+                                "uri"
+                              ],
+                              "properties": {
+                                "uri": {
+                                  "type": "string",
+                                  "format": "uri"
+                                },
+                                "accept": {
+                                  "type": "string",
+                                  "enum": [
+                                    "application/json",
+                                    "application/ld+json"
+                                  ]
+                                }
+                              }
+                            },
+                            "timesSent": {
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "lastNotification": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "lastFailure": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "lastSuccess": {
+                              "type": "string",
+                              "format": "date-time"
+                            }
+                          }
+                        },
+                        "expires": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "active",
+                            "inactive",
+                            "failed",
+                            "expired"
+                          ]
+                        },
+                        "throttling": {
+                          "type": "number",
+                          "minimum": 1
+                        },
+                        "q": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "@context": {
+                          "type": [
+                            "string",
+                            "object",
+                            "array"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/get/responses/200/schema/allOf/3"
+                }
+              ]
             }
           }
         ],
@@ -1540,10 +1544,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/paths/~1subscriptions~1%7BsubscriptionId%7D/get/responses/200/schema"
-              }
+              "$ref": "#/paths/~1subscriptions/get/responses/200/schema"
             }
           },
           "400": {

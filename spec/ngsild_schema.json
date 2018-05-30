@@ -31,6 +31,15 @@
                 }
             }
         },
+        "observedMember": {
+            "type": "object",
+            "properties": {
+                "observedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
         "AtContext": {
             "type": "object",
             "properties": {
@@ -40,46 +49,40 @@
             }
         },
         "PropertyCommonData": {
-            "type": "object",
-            "properties": {
-                "observedAt": {
-                    "type": "string",
-                    "format": "date-time"
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "unitCode": {
+                            "type": "string"
+                        }
+                    }
                 },
-                "unitCode": {
-                    "type": "string"
+                {
+                    "$ref": "#/definitions/observedMember"
                 }
-            }
+            ]
         },
         "Property": {
             "allOf": [
-              {
-                  "type": "object",
-                  "required": ["type", "value"],
-                  "properties": {
-                      "type": {
-                          "type": "string",
-                          "enum": ["Property"]
-                      },
-                      "value": {}
-                  }
-              },
-              {
-                "$ref": "#/definitions/CommonMembers"
-              },
-              {
-                "$ref": "#/definitions/PropertyCommonData"
-              }
-            ]
-        },
-        "RelationshipCommonData": {
-            "type": "object",
-            "properties": {
-                "observedAt": {
-                    "type": "string",
-                    "format": "date-time"
+                {
+                    "type": "object",
+                    "required": ["type", "value"],
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": ["Property"]
+                        },
+                        "value": {}
+                    }
+                },
+                {
+                    "$ref": "#/definitions/CommonMembers"
+                },
+                {
+                    "$ref": "#/definitions/PropertyCommonData"
                 }
-            }
+            ]
         },
         "Relationship": {
             "allOf": [
@@ -101,8 +104,30 @@
                     "$ref": "#/definitions/CommonMembers"
                 },
                 {
-                    "$ref": "#/definitions/RelationshipCommonData"
+                    "$ref": "#/definitions/observedMember"
                 }
+            ]
+        },
+        "GeoProperty": {
+          "allOf" : [
+              {
+                  "type": "object",
+                  "required": ["type", "value"],
+                  "properties": {
+                      "type": {
+                          "type": "string",
+                          "enum": [
+                              "GeoProperty"
+                          ]
+                    },
+                    "value": {
+                        "type": "object"
+                    }
+                  }
+              },
+              {
+                "$ref": "#/definitions/observedMember"
+              }
             ]
         },
         "EntityInfo": {

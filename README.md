@@ -1,5 +1,7 @@
 # ETSI ISG CIM - NGSI-LD API Swagger 2.0 definition
 
+# This work has been moved to [https://forge.etsi.org/rep/gitweb.cgi/NGSI-LD.git/tree]
+
 **Description**\
 This repository contains the NGSI-LD API Swagger 2.0 definition, an API defined by the ETSI ISG CIM for cross-domain context information management.
 
